@@ -1,51 +1,83 @@
 package com.example.groupproject404.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.UUID;
 
+@Entity
 public class Drone {
 
-	private final UUID id;
 
-	private final String Name;
-	private final String model;
-	private final String DirTable;
-	private final int speed;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private UUID id;
+	private String Name;
+	private String model;
+	private double mass;
+	private int batteryCap;
+	private double battPerc;
 
-	public Drone(@JsonProperty("id") UUID id,
-				 @JsonProperty("name") String name,
-				 @JsonProperty("model") String model,
-				 @JsonProperty("dirTable") String dirTable,
-				 @JsonProperty("speed") int speed) {
+	public Drone() {
+	}
+
+	public Drone(UUID id, String name, String model, double mass, int batteryCap, double battPerc) {
 		this.id = id;
 		Name = name;
 		this.model = model;
-		DirTable = dirTable;
-		this.speed = speed;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public String getModel() {
-		return model;
+		this.mass = mass;
+		this.batteryCap = batteryCap;
+		this.battPerc = battPerc;
 	}
 
 	public UUID getId() {
 		return id;
 	}
 
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return Name;
 	}
 
-
-	public String getDirTable() {
-		return DirTable;
+	public void setName(String name) {
+		Name = name;
 	}
 
-	
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public double getMass() {
+		return mass;
+	}
+
+	public void setMass(double mass) {
+		this.mass = mass;
+	}
+
+	public int getBatteryCap() {
+		return batteryCap;
+	}
+
+	public void setBatteryCap(int batteryCap) {
+		this.batteryCap = batteryCap;
+	}
+
+	public double getBattPerc() {
+		return battPerc;
+	}
+
+	public void setBattPerc(double battPerc) {
+		this.battPerc = battPerc;
+	}
 }

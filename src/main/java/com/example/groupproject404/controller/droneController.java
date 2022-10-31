@@ -12,36 +12,31 @@ import java.util.UUID;
 @RestController
 public class droneController {
 
-    private final droneService _droneService;
-
     @Autowired
     public droneController(droneService _droneService) {
-        this._droneService = _droneService;
     }
 
     @PostMapping
     public void addDrone(@RequestBody Drone drone){
-        _droneService.addDrone(drone);
     }
 
     @GetMapping
     public List<Drone> getAllDrone(){
-        return _droneService.getAllDrone();
+        return null;
     }
 
     @GetMapping(path = "{id}")
     public Drone getDroneById(@PathVariable("id") UUID id){
-        return _droneService.getDroneById(id)
-                .orElse(null);
+        return null;
     }
 
     @DeleteMapping(path = "{id}")
     public void deleteDroneById(@PathVariable("id") UUID id){
-        _droneService.deleteDrone(id);
+
     }
 
     @PutMapping(path = "{id}")
     public void updateDrone(@PathVariable("id") UUID id, @RequestBody Drone droneToupdate){
-        _droneService.updateDrone(id,droneToupdate);
+
     }
 }
