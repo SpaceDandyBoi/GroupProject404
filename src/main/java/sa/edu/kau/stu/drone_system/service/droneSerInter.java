@@ -1,21 +1,17 @@
-package com.example.groupproject404.service;
+package sa.edu.kau.stu.drone_system.service;
+
+import sa.edu.kau.stu.drone_system.entity.Drone;
 
 import java.util.List;
 
-import com.example.groupproject404.entity.Drone;
-
-
-
 public interface droneSerInter {
-	
 	void addDrone(Drone drone);
-	
+
 	List<Drone> getAllDrones();
-	
+
 	Drone getDroneInfo(Long id);
-	
+
 	boolean deleteDrone(Long id);
-	
+
 	boolean updateDrone(Long id, Drone droneToupdate);
-	
 }

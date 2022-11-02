@@ -1,20 +1,18 @@
-package com.example.groupproject404.controller;
+package sa.edu.kau.stu.drone_system.controller;
 
-
-import com.example.groupproject404.entity.Drone;
-import com.example.groupproject404.service.droneSerInter;
-import com.example.groupproject404.service.droneService;
+import sa.edu.kau.stu.drone_system.entity.Drone;
+import sa.edu.kau.stu.drone_system.service.droneService;
+import sa.edu.kau.stu.drone_system.service.droneSerInter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RequestMapping("controller/v1/drone")
 @RestController
 public class droneController {
-	
+
 	@Autowired
 	droneSerInter myDrones;
 

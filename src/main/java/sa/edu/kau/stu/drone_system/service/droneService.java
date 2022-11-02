@@ -1,6 +1,7 @@
-package com.example.groupproject404.service;
+package sa.edu.kau.stu.drone_system.service;
 
-import com.example.groupproject404.dao.droneDAO;
+import sa.edu.kau.stu.drone_system.dao.droneDAO;
+import sa.edu.kau.stu.drone_system.entity.Drone;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,21 +9,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.groupproject404.entity.Drone;
-
 @Service
 public class droneService implements droneSerInter{
-	
+
 	@Autowired
     droneDAO _droneDao;
-	
+
 
 	@Override
 	public void addDrone(Drone drone) {
 		_droneDao.save(drone);
-		
+
 	}
-	
+
 	@Override
 	public List<Drone> getAllDrones() {
 		return _droneDao.findAll();
@@ -30,7 +29,7 @@ public class droneService implements droneSerInter{
 
 	@Override
 	public Drone getDroneInfo(Long id) {
-		
+
 		Optional<Drone> drone = _droneDao.findById(id);
 		if(drone.isPresent()) {
 			return drone.get();
@@ -41,7 +40,7 @@ public class droneService implements droneSerInter{
 
 	@Override
 	public boolean deleteDrone(Long id) {
-	
+
 			Optional<Drone> drone = _droneDao.findById(id);
 			if(drone.isPresent()) {
 				_droneDao.delete(drone.get());
@@ -49,12 +48,12 @@ public class droneService implements droneSerInter{
 			}else {
 				return false;
 			}
-			
+
 	}
 
 	@Override
 	public boolean updateDrone(Long id, Drone droneToupdate) {
-			
+
 			if(_droneDao.findById(id).isPresent()) {
 				Drone drone = _droneDao.findById(id).get();
 				drone.setName(droneToupdate.getName());
@@ -67,12 +66,12 @@ public class droneService implements droneSerInter{
 			}else {
 				return false;
 			}
-		
+
 	}
 
 
-	
 
-   
-    
+
+
+
 }

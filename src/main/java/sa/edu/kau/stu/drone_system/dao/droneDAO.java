@@ -1,6 +1,6 @@
-package com.example.groupproject404.dao;
+package sa.edu.kau.stu.drone_system.dao;
 
-import com.example.groupproject404.entity.Drone;
+import sa.edu.kau.stu.drone_system.entity.Drone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

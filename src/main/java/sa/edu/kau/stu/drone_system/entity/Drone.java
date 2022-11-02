@@ -1,4 +1,4 @@
-package com.example.groupproject404.entity;
+package sa.edu.kau.stu.drone_system.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
