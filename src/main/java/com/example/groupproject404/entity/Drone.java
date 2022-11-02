@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.UUID;
+
 
 @Entity
 public class Drone {
@@ -14,7 +14,7 @@ public class Drone {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private UUID id;
+	private Long id;
 	private String Name;
 	private String model;
 	private double mass;
@@ -24,7 +24,7 @@ public class Drone {
 	public Drone() {
 	}
 
-	public Drone(UUID id, String name, String model, double mass, int batteryCap, double battPerc) {
+	public Drone(Long id, String name, String model, double mass, int batteryCap, double battPerc) {
 		this.id = id;
 		Name = name;
 		this.model = model;
@@ -33,11 +33,11 @@ public class Drone {
 		this.battPerc = battPerc;
 	}
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
