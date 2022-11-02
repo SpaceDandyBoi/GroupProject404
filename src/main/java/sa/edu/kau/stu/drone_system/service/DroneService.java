@@ -1,6 +1,6 @@
 package sa.edu.kau.stu.drone_system.service;
 
-import sa.edu.kau.stu.drone_system.dao.droneDAO;
+import sa.edu.kau.stu.drone_system.dao.DroneDAO;
 import sa.edu.kau.stu.drone_system.entity.Drone;
 
 import java.util.List;
@@ -10,10 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class droneService implements droneSerInter{
-
+public class DroneService implements IDroneService {
 	@Autowired
-    droneDAO _droneDao;
+    DroneDAO _droneDao;
 
 
 	@Override
@@ -68,10 +67,4 @@ public class droneService implements droneSerInter{
 			}
 
 	}
-
-
-
-
-
-
 }

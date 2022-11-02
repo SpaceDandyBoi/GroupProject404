@@ -4,7 +4,7 @@ import sa.edu.kau.stu.drone_system.entity.Drone;
 
 import java.util.List;
 
-public interface droneSerInter {
+public interface IDroneService {
 	void addDrone(Drone drone);
 
 	List<Drone> getAllDrones();

@@ -1,4 +1,4 @@
 package sa.edu.kau.stu.drone_system.controller;
 
-public class pathController {
+public class PathController {
 }

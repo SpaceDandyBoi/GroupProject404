@@ -1,13 +1,11 @@
-package com.example.groupproject404;
+package sa.edu.kau.stu.drone_system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GroupProject404ApplicationTests {
-
+public class DroneSystemApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
