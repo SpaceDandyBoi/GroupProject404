@@ -14,4 +14,13 @@ public interface IDroneService {
 	boolean deleteDrone(Long id);
 
 	boolean updateDrone(Long id, Drone droneToupdate);
+	
+	String getDroneModel(Long id);
+	
+	double getDroneMass(Long id);
+	
+	int getDroneBatteryCapacity (Long id);
+	
+	double getDroneCurrentCharge (Long id);
+	
 }

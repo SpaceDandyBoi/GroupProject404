@@ -60,4 +60,42 @@ public class DroneService implements IDroneService {
 			return false;
 		}
 	}
+
+	@Override
+	public String getDroneModel(Long id) {
+		Optional<Drone> drone = _droneDao.findById(id);
+		if(drone != null) {
+			return drone.get().getModel();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public double getDroneMass(Long id) {
+		Optional<Drone> drone = _droneDao.findById(id);
+		if(drone != null) {
+			return drone.get().getMass();
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public int getDroneBatteryCapacity(Long id) {
+		Optional<Drone> drone = _droneDao.findById(id);
+		if(drone != null) {
+			return drone.get().getBatteryCap();
+		}
+		return 0;
+	}
+
+	@Override
+	public double getDroneCurrentCharge(Long id) {
+		Optional<Drone> drone = _droneDao.findById(id);
+		if(drone != null) {
+			return drone.get().getBattPerc();
+		}
+		return 0;
+	}
 }
