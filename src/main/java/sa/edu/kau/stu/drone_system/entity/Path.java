@@ -7,8 +7,7 @@ import java.util.UUID;
 public class Path {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private UUID DroneId;
+	private UUID id;
 	private int Xcoor;
 	private int Ycoor;
 	private int Zcoor;
@@ -17,28 +16,20 @@ public class Path {
 	public Path() {
 	}
 
-	public Path( UUID droneId, int xcoor, int ycoor, int zcoor, int time) {
-		DroneId = droneId;
+	public Path(UUID id, int xcoor, int ycoor, int zcoor, int time) {
+		this.id = id;
 		Xcoor = xcoor;
 		Ycoor = ycoor;
 		Zcoor = zcoor;
 		this.time = time;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
-	}
-
-	public UUID getDroneId() {
-		return DroneId;
-	}
-
-	public void setDroneId(UUID droneId) {
-		DroneId = droneId;
 	}
 
 	public int getXcoor() {
