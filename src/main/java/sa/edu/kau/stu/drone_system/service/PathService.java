@@ -7,22 +7,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sa.edu.kau.stu.drone_system.dao.PathDAO;
 import sa.edu.kau.stu.drone_system.entity.Drone;
 import sa.edu.kau.stu.drone_system.entity.Path;
+import sa.edu.kau.stu.drone_system.repository.PathRepository;
 
 @Service
 public class PathService implements IPathService {
 	@Autowired
-	private PathDAO _pathDao;
+	private PathRepository _pathRepo;
 
 	public void addPath(Path path) {
-		_pathDao.save(path);
+		_pathRepo.save(path);
 	}
 
 	@Override
 	public Path getDroneLocation(Long id, int time) {
-		List<Path> paths = _pathDao.findAll();
+		List<Path> paths = _pathRepo.findAll();
 		for (Path p : paths) {
 			if (p.getDroneID() == id && p.getTime() == time) {
 				return p;
@@ -40,7 +40,7 @@ public class PathService implements IPathService {
 
 	@Override
 	public List<Path> GetAllDronesLocations(int time) {
-		List<Path> paths = _pathDao.findAll();
+		List<Path> paths = _pathRepo.findAll();
 		List<Path> ans = new ArrayList<>();
 		for (Path p : paths) {
 			if (p.getTime() == time) {
@@ -52,7 +52,7 @@ public class PathService implements IPathService {
 
 	@Override
 	public List<Path> getDronePath(Long id) {
-		List<Path> paths = _pathDao.findAll();
+		List<Path> paths = _pathRepo.findAll();
 		List<Path> ans = new ArrayList<>();
 		for (Path p : paths) {
 			if (p.getDroneID() == id) {
@@ -64,7 +64,7 @@ public class PathService implements IPathService {
 
 	@Override
 	public List<Path> getAllDronesPaths() {
-		return _pathDao.findAll();
+		return _pathRepo.findAll();
 	}
 
 	@Override
@@ -76,14 +76,14 @@ public class PathService implements IPathService {
 	@Override
 	public boolean updatePath(Long id, Path updatedPath) {
 
-		if (_pathDao.findById(id).isPresent()) {
-			Path path = _pathDao.findById(id).get();
+		if (_pathRepo.findById(id).isPresent()) {
+			Path path = _pathRepo.findById(id).get();
 			path.setDroneID(updatedPath.getDroneID());
 			path.setTime(updatedPath.getTime());
 			path.setXcoor(updatedPath.getXcoor());
 			path.setYcoor(updatedPath.getYcoor());
 			path.setZcoor(updatedPath.getZcoor());
-			_pathDao.save(path);
+			_pathRepo.save(path);
 			return true;
 		} else {
 			return false;
@@ -93,7 +93,7 @@ public class PathService implements IPathService {
 
 	@Override
 	public Path getPath(Long id) {
-		Optional<Path> path = _pathDao.findById(id);
+		Optional<Path> path = _pathRepo.findById(id);
 		if (path != null) {
 			return path.get();
 		}
