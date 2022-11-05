@@ -80,9 +80,9 @@ public class PathService implements IPathService {
 			Path path = _pathRepo.findById(id).get();
 			path.setDroneID(updatedPath.getDroneID());
 			path.setTime(updatedPath.getTime());
-			path.setXcoor(updatedPath.getXcoor());
-			path.setYcoor(updatedPath.getYcoor());
-			path.setZcoor(updatedPath.getZcoor());
+			path.setX(updatedPath.getX());
+			path.setY(updatedPath.getY());
+			path.setZ(updatedPath.getZ());
 			_pathRepo.save(path);
 			return true;
 		} else {

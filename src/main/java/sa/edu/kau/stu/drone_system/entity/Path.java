@@ -6,20 +6,20 @@ public class Path {
 	@Id
 	private Long id;
 	private Long drone_id;
-	private int Xcoor;
-	private int Ycoor;
-	private int Zcoor;
+	private int x;
+	private int y;
+	private int z;
 	private int time;
 
 	public Path() {
 	}
 
-	public Path(Long id, Long drone_id, int xcoor, int ycoor, int zcoor, int time) {
+	public Path(Long id, Long drone_id, int x, int y, int z, int time) {
 		this.id = id;
 		this.drone_id = drone_id;
-		Xcoor = xcoor;
-		Ycoor = ycoor;
-		Zcoor = zcoor;
+		this.x = x;
+		this.y = y;
+		this.z = z;
 		this.time = time;
 	}
 
@@ -39,28 +39,28 @@ public class Path {
 		this.drone_id = droneID;
 	}
 
-	public int getXcoor() {
-		return Xcoor;
+	public int getX() {
+		return x;
 	}
 
-	public void setXcoor(int xcoor) {
-		Xcoor = xcoor;
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public int getYcoor() {
-		return Ycoor;
+	public int getY() {
+		return y;
 	}
 
-	public void setYcoor(int ycoor) {
-		Ycoor = ycoor;
+	public void setY(int y) {
+		this.y = y;
 	}
 
-	public int getZcoor() {
-		return Zcoor;
+	public int getZ() {
+		return z;
 	}
 
-	public void setZcoor(int zcoor) {
-		Zcoor = zcoor;
+	public void setZ(int z) {
+		this.z = z;
 	}
 
 	public int getTime() {
