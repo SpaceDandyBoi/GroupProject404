@@ -6,27 +6,27 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sa.edu.kau.stu.drone_system.dao.DroneDAO;
 import sa.edu.kau.stu.drone_system.entity.Drone;
+import sa.edu.kau.stu.drone_system.repository.DroneRepository;
 
 @Service
 public class DroneService implements IDroneService {
 	@Autowired
-	DroneDAO _droneDao;
+	DroneRepository _droneRepo;
 
 	@Override
 	public void addDrone(Drone drone) {
-		_droneDao.save(drone);
+		_droneRepo.save(drone);
 	}
 
 	@Override
 	public List<Drone> getAllDrones() {
-		return _droneDao.findAll();
+		return _droneRepo.findAll();
 	}
 
 	@Override
 	public Drone getDroneInfo(Long id) {
-		Optional<Drone> drone = _droneDao.findById(id);
+		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
 			return drone.get();
 		} else {
@@ -36,9 +36,9 @@ public class DroneService implements IDroneService {
 
 	@Override
 	public boolean deleteDrone(Long id) {
-		Optional<Drone> drone = _droneDao.findById(id);
+		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
-			_droneDao.delete(drone.get());
+			_droneRepo.delete(drone.get());
 			return true;
 		} else {
 			return false;
@@ -47,14 +47,14 @@ public class DroneService implements IDroneService {
 
 	@Override
 	public boolean updateDrone(Long id, Drone droneToupdate) {
-		if (_droneDao.findById(id).isPresent()) {
-			Drone drone = _droneDao.findById(id).get();
+		if (_droneRepo.findById(id).isPresent()) {
+			Drone drone = _droneRepo.findById(id).get();
 			drone.setName(droneToupdate.getName());
 			drone.setModel(droneToupdate.getModel());
 			drone.setMass(droneToupdate.getMass());
 			drone.setBatteryCap(droneToupdate.getBatteryCap());
 			drone.setBattPerc(droneToupdate.getBattPerc());
-			_droneDao.save(drone);
+			_droneRepo.save(drone);
 			return true;
 		} else {
 			return false;
@@ -63,7 +63,7 @@ public class DroneService implements IDroneService {
 
 	@Override
 	public String getDroneModel(Long id) {
-		Optional<Drone> drone = _droneDao.findById(id);
+		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getModel();
 		}
@@ -73,7 +73,7 @@ public class DroneService implements IDroneService {
 
 	@Override
 	public double getDroneMass(Long id) {
-		Optional<Drone> drone = _droneDao.findById(id);
+		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getMass();
 		}
@@ -83,7 +83,7 @@ public class DroneService implements IDroneService {
 
 	@Override
 	public int getDroneBatteryCapacity(Long id) {
-		Optional<Drone> drone = _droneDao.findById(id);
+		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getBatteryCap();
 		}
@@ -92,7 +92,7 @@ public class DroneService implements IDroneService {
 
 	@Override
 	public double getDroneCurrentCharge(Long id) {
-		Optional<Drone> drone = _droneDao.findById(id);
+		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getBattPerc();
 		}
