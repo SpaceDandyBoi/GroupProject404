@@ -1,13 +1,13 @@
 package sa.edu.kau.stu.drone_system.service;
 
-import sa.edu.kau.stu.drone_system.dao.DroneDAO;
-import sa.edu.kau.stu.drone_system.entity.Drone;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import sa.edu.kau.stu.drone_system.dao.DroneDAO;
+import sa.edu.kau.stu.drone_system.entity.Drone;
 
 @Service
 public class DroneService implements IDroneService {
@@ -64,27 +64,27 @@ public class DroneService implements IDroneService {
 	@Override
 	public String getDroneModel(Long id) {
 		Optional<Drone> drone = _droneDao.findById(id);
-		if(drone != null) {
+		if (drone != null) {
 			return drone.get().getModel();
 		}
-		
+
 		return null;
 	}
 
 	@Override
 	public double getDroneMass(Long id) {
 		Optional<Drone> drone = _droneDao.findById(id);
-		if(drone != null) {
+		if (drone != null) {
 			return drone.get().getMass();
 		}
-		
+
 		return 0;
 	}
 
 	@Override
 	public int getDroneBatteryCapacity(Long id) {
 		Optional<Drone> drone = _droneDao.findById(id);
-		if(drone != null) {
+		if (drone != null) {
 			return drone.get().getBatteryCap();
 		}
 		return 0;
@@ -93,7 +93,7 @@ public class DroneService implements IDroneService {
 	@Override
 	public double getDroneCurrentCharge(Long id) {
 		Optional<Drone> drone = _droneDao.findById(id);
-		if(drone != null) {
+		if (drone != null) {
 			return drone.get().getBattPerc();
 		}
 		return 0;

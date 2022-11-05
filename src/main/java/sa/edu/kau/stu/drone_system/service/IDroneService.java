@@ -1,8 +1,8 @@
 package sa.edu.kau.stu.drone_system.service;
 
-import sa.edu.kau.stu.drone_system.entity.Drone;
-
 import java.util.List;
+
+import sa.edu.kau.stu.drone_system.entity.Drone;
 
 public interface IDroneService {
 	void addDrone(Drone drone);
@@ -14,13 +14,13 @@ public interface IDroneService {
 	boolean deleteDrone(Long id);
 
 	boolean updateDrone(Long id, Drone droneToupdate);
-	
+
 	String getDroneModel(Long id);
-	
+
 	double getDroneMass(Long id);
-	
-	int getDroneBatteryCapacity (Long id);
-	
-	double getDroneCurrentCharge (Long id);
-	
+
+	int getDroneBatteryCapacity(Long id);
+
+	double getDroneCurrentCharge(Long id);
+
 }
