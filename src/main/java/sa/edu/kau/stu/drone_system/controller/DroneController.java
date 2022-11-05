@@ -1,18 +1,23 @@
 package sa.edu.kau.stu.drone_system.controller;
 
-import sa.edu.kau.stu.drone_system.entity.Drone;
-import sa.edu.kau.stu.drone_system.service.IDroneService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import sa.edu.kau.stu.drone_system.entity.Drone;
+import sa.edu.kau.stu.drone_system.service.IDroneService;
 
 @RequestMapping("controller/v1/drone")
 @RestController
 public class DroneController {
-	
 	@Autowired
 	IDroneService myDrones;
 
@@ -44,23 +49,23 @@ public class DroneController {
 	public boolean updateDrone(@PathVariable("id") long id, @RequestBody Drone droneToupdate) {
 		return myDrones.updateDrone(id, droneToupdate);
 	}
-	
+
 	@GetMapping(path = "model/{id}")
 	public StringResponseWrapper getDroneModel(@PathVariable("id") long id) {
 		StringResponseWrapper s = new StringResponseWrapper(myDrones.getDroneModel(id));
 		return s;
 	}
-	
+
 	@GetMapping(path = "mass/{id}")
 	public double getDroneMass(@PathVariable("id") long id) {
 		return myDrones.getDroneMass(id);
 	}
-	
+
 	@GetMapping(path = "batteryCapacity/{id}")
 	public int getDroneBatterCapacity(@PathVariable("id") long id) {
 		return myDrones.getDroneBatteryCapacity(id);
 	}
-	
+
 	@GetMapping(path = "currentCharge/{id}")
 	public double getDroneCurrentCharege(@PathVariable("id") long id) {
 		return myDrones.getDroneCurrentCharge(id);

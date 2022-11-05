@@ -1,7 +1,9 @@
 package sa.edu.kau.stu.drone_system.entity;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Path {
@@ -33,7 +35,6 @@ public class Path {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 
 	public Long getDroneID() {
 		return drone_id;

@@ -13,24 +13,22 @@ import sa.edu.kau.stu.drone_system.entity.Path;
 
 @Service
 public class PathService implements IPathService {
-	
 	@Autowired
 	private PathDAO _pathDao;
 
-	
 	public void addPath(Path path) {
 		_pathDao.save(path);
 	}
-	
+
 	@Override
 	public Path getDroneLocation(Long id, int time) {
 		List<Path> paths = _pathDao.findAll();
-		for(Path p: paths) {
-			if(p.getDroneID() == id && p.getTime() == time) {
+		for (Path p : paths) {
+			if (p.getDroneID() == id && p.getTime() == time) {
 				return p;
 			}
 		}
-		
+
 		return null;
 	}
 
@@ -44,8 +42,8 @@ public class PathService implements IPathService {
 	public List<Path> GetAllDronesLocations(int time) {
 		List<Path> paths = _pathDao.findAll();
 		List<Path> ans = new ArrayList<>();
-		for(Path p: paths) {
-			if(p.getTime() == time) {
+		for (Path p : paths) {
+			if (p.getTime() == time) {
 				ans.add(p);
 			}
 		}
@@ -56,8 +54,8 @@ public class PathService implements IPathService {
 	public List<Path> getDronePath(Long id) {
 		List<Path> paths = _pathDao.findAll();
 		List<Path> ans = new ArrayList<>();
-		for(Path p: paths) {
-			if(p.getDroneID() == id) {
+		for (Path p : paths) {
+			if (p.getDroneID() == id) {
 				ans.add(p);
 			}
 		}
@@ -77,7 +75,7 @@ public class PathService implements IPathService {
 
 	@Override
 	public boolean updatePath(Long id, Path updatedPath) {
-		
+
 		if (_pathDao.findById(id).isPresent()) {
 			Path path = _pathDao.findById(id).get();
 			path.setDroneID(updatedPath.getDroneID());
@@ -90,13 +88,13 @@ public class PathService implements IPathService {
 		} else {
 			return false;
 		}
-		
+
 	}
 
 	@Override
 	public Path getPath(Long id) {
 		Optional<Path> path = _pathDao.findById(id);
-		if(path != null) {
+		if (path != null) {
 			return path.get();
 		}
 		return null;
