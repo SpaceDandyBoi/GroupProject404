@@ -8,8 +8,8 @@ public class Drone {
 	private String Name;
 	private String model;
 	private double mass;
-	private int batteryCap;
-	private double battPerc;
+	private int batteryCapacity;
+	private double batteryPercentage;
 
 	public Drone() {
 	}
@@ -19,8 +19,8 @@ public class Drone {
 		Name = name;
 		this.model = model;
 		this.mass = mass;
-		this.batteryCap = batteryCap;
-		this.battPerc = battPerc;
+		this.batteryCapacity = batteryCap;
+		this.batteryPercentage = battPerc;
 	}
 
 	public Long getId() {
@@ -55,19 +55,19 @@ public class Drone {
 		this.mass = mass;
 	}
 
-	public int getBatteryCap() {
-		return batteryCap;
+	public int getBatteryCapacity() {
+		return batteryCapacity;
 	}
 
-	public void setBatteryCap(int batteryCap) {
-		this.batteryCap = batteryCap;
+	public void setBatteryCapacity(int batteryCap) {
+		this.batteryCapacity = batteryCap;
 	}
 
-	public double getBattPerc() {
-		return battPerc;
+	public double getBatteryPercentage() {
+		return batteryPercentage;
 	}
 
-	public void setBattPerc(double battPerc) {
-		this.battPerc = battPerc;
+	public void setBatteryPercentage(double battPerc) {
+		this.batteryPercentage = battPerc;
 	}
 }
