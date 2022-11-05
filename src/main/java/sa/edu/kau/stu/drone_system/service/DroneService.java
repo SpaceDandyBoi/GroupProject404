@@ -52,8 +52,8 @@ public class DroneService implements IDroneService {
 			drone.setName(droneToupdate.getName());
 			drone.setModel(droneToupdate.getModel());
 			drone.setMass(droneToupdate.getMass());
-			drone.setBatteryCap(droneToupdate.getBatteryCap());
-			drone.setBattPerc(droneToupdate.getBattPerc());
+			drone.setBatteryCapacity(droneToupdate.getBatteryCapacity());
+			drone.setBatteryPercentage(droneToupdate.getBatteryPercentage());
 			_droneRepo.save(drone);
 			return true;
 		} else {
@@ -85,7 +85,7 @@ public class DroneService implements IDroneService {
 	public int getDroneBatteryCapacity(Long id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
-			return drone.get().getBatteryCap();
+			return drone.get().getBatteryCapacity();
 		}
 		return 0;
 	}
@@ -94,7 +94,7 @@ public class DroneService implements IDroneService {
 	public double getDroneCurrentCharge(Long id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
-			return drone.get().getBattPerc();
+			return drone.get().getBatteryPercentage();
 		}
 		return 0;
 	}
