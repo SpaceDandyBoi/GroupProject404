@@ -1,8 +1,8 @@
-package sa.edu.kau.stu.drone_system.service;
+package sa.edu.kau.stu.drone_database_service.service;
 
 import java.util.List;
 
-import sa.edu.kau.stu.drone_system.entity.Drone;
+import sa.edu.kau.stu.drone_database_service.entity.Drone;
 
 public interface IDroneService {
 	void addDrone(Drone drone);
