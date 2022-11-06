@@ -1,4 +1,4 @@
-package sa.edu.kau.stu.drone_system.service;
+package sa.edu.kau.stu.drone_database_service.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sa.edu.kau.stu.drone_system.entity.Drone;
-import sa.edu.kau.stu.drone_system.repository.DroneRepository;
+import sa.edu.kau.stu.drone_database_service.entity.Drone;
+import sa.edu.kau.stu.drone_database_service.repository.DroneRepository;
 
 @Service
 public class DroneService implements IDroneService {

@@ -10,10 +10,11 @@
 	</parent>
 
 	<groupId>sa.edu.kau.stu</groupId>
-	<artifactId>drone_system</artifactId>
+	<artifactId>drone_database_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>drone_system</name>
-	<description>A drone system submitted as the project for CPCS 404</description>
+	<name>drone_database_service</name>
+	<description>This is a service to access the drone database</description>
+	<!--packaging>jar</packaging-->
 
 	<properties>
 		<java.version>17</java.version>
@@ -54,20 +55,5 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring Framework dependencies -->
-
-		<dependency>
-			<groupId>sa.edu.kau.stu</groupId>
-			<artifactId>drone_database_service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>
