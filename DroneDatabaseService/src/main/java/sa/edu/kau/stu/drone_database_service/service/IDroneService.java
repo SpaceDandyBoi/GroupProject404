@@ -9,23 +9,23 @@ public interface IDroneService {
 
 	List<Drone> getAllDrones();
 
-	Drone getDroneInfo(Long id);
+	Drone getDroneInfo(String id);
 
-	boolean deleteDrone(Long id);
+	boolean deleteDrone(String id);
 
-	boolean updateDrone(Long id, Drone droneToupdate);
+	boolean updateDrone(String id, Drone droneToupdate);
 
-	String getDroneModel(Long id);
+	String getDroneModel(String id);
 
-	double getDroneMass(Long id);
+	double getDroneMass(String id);
 
-	int getDroneBatteryCapacity(Long id);
+	int getDroneBatteryCapacity(String id);
 
-	double getDroneCurrentCharge(Long id);
+	double getDroneCurrentCharge(String id);
 
-	int[] getDroneXValues(Long id);
+	int[] getDroneXValues(String id);
 
-	int[] getDroneYValues(Long id);
+	int[] getDroneYValues(String id);
 
-	int[] getDroneZValues(Long id);
+	int[] getDroneZValues(String id);
 }
