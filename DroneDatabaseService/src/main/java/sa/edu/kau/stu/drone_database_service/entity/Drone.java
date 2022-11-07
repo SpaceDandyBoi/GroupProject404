@@ -12,19 +12,20 @@ public class Drone {
 	private double mass;
 	private int batteryCapacity;
 	private double batteryPercentage;
+	private PathType pathType = PathType.Simple;
 	private List<Coord> path;
 
 	public Drone() {
 	}
 
-	public Drone(String id, String name, String model, double mass, int batteryCap, double battPerc,
+	public Drone(String id, String name, String model, double mass, int capacity, double percentage,
 			List<Coord> path) {
 		this.id = id;
 		this.name = name;
 		this.model = model;
 		this.mass = mass;
-		this.batteryCapacity = batteryCap;
-		this.batteryPercentage = battPerc;
+		this.batteryCapacity = capacity;
+		this.batteryPercentage = percentage;
 		this.path = path;
 	}
 
@@ -64,16 +65,16 @@ public class Drone {
 		return batteryCapacity;
 	}
 
-	public void setBatteryCapacity(int batteryCap) {
-		this.batteryCapacity = batteryCap;
+	public void setBatteryCapacity(int capacity) {
+		this.batteryCapacity = capacity;
 	}
 
 	public double getBatteryPercentage() {
 		return batteryPercentage;
 	}
 
-	public void setBatteryPercentage(double battPerc) {
-		this.batteryPercentage = battPerc;
+	public void setBatteryPercentage(double percentage) {
+		this.batteryPercentage = percentage;
 	}
 
 	public List<Coord> getPath() {
