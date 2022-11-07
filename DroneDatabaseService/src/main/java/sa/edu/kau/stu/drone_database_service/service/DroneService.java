@@ -25,7 +25,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public Drone getDroneInfo(Long id) {
+	public Drone getDroneInfo(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
 			return drone.get();
@@ -35,7 +35,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public boolean deleteDrone(Long id) {
+	public boolean deleteDrone(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
 			_droneRepo.delete(drone.get());
@@ -46,7 +46,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public boolean updateDrone(Long id, Drone droneToupdate) {
+	public boolean updateDrone(String id, Drone droneToupdate) {
 		if (_droneRepo.findById(id).isPresent()) {
 			Drone drone = _droneRepo.findById(id).get();
 			drone.setName(droneToupdate.getName());
@@ -62,7 +62,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public String getDroneModel(Long id) {
+	public String getDroneModel(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getModel();
@@ -72,7 +72,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public double getDroneMass(Long id) {
+	public double getDroneMass(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getMass();
@@ -82,7 +82,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public int getDroneBatteryCapacity(Long id) {
+	public int getDroneBatteryCapacity(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getBatteryCapacity();
@@ -91,7 +91,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public double getDroneCurrentCharge(Long id) {
+	public double getDroneCurrentCharge(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone != null) {
 			return drone.get().getBatteryPercentage();
@@ -100,7 +100,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public int[] getDroneXValues(Long id) {
+	public int[] getDroneXValues(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
 			return drone.get().getXValues();
@@ -109,7 +109,7 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public int[] getDroneYValues(Long id) {
+	public int[] getDroneYValues(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
 			return drone.get().getYValues();
@@ -118,11 +118,12 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public int[] getDroneZValues(Long id) {
+	public int[] getDroneZValues(String id) {
 		Optional<Drone> drone = _droneRepo.findById(id);
 		if (drone.isPresent()) {
 			return drone.get().getZValues();
 		}
 		return new int[] {};
 	}
+
 }
