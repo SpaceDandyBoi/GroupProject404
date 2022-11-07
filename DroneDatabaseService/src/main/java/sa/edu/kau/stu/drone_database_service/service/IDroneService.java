@@ -23,4 +23,9 @@ public interface IDroneService {
 
 	double getDroneCurrentCharge(Long id);
 
+	int[] getDroneXValues(Long id);
+
+	int[] getDroneYValues(Long id);
+
+	int[] getDroneZValues(Long id);
 }
