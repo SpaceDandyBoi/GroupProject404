@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 import sa.edu.kau.stu.drone_base_library.configuration.BaseLibraryConfig;
-import sa.edu.kau.stu.drone_database_service.configuration.SharedConfigurationReference;
+import sa.edu.kau.stu.drone_database_service.configuration.DatabaseServiceConfig;
 
 @SpringBootApplication
-@Import({ BaseLibraryConfig.class, SharedConfigurationReference.class })
+@Import({ BaseLibraryConfig.class, DatabaseServiceConfig.class })
 public class DroneSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DroneSystemApplication.class, args);
