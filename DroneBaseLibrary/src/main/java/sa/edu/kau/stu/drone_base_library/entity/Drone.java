@@ -93,6 +93,30 @@ public class Drone {
 	public void setPath(List<Coord> path) {
 		this.path = path;
 	}
+
+	public int[] getXValues() {
+		var ret = new int[path.size()];
+		for (int i = 0; i < path.size(); i++) {
+			ret[i] = path.get(i).getX();
+		}
+		return ret;
+	}
+
+	public int[] getYValues() {
+		var ret = new int[path.size()];
+		for (int i = 0; i < path.size(); i++) {
+			ret[i] = path.get(i).getY();
+		}
+		return ret;
+	}
+
+	public int[] getZValues() {
+		var ret = new int[path.size()];
+		for (int i = 0; i < path.size(); i++) {
+			ret[i] = path.get(i).getZ();
+		}
+		return ret;
+	}
 }
 
 enum PathType {
