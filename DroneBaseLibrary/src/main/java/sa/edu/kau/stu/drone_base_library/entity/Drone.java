@@ -1,4 +1,4 @@
-package sa.edu.kau.stu.drone_database_service.entity;
+package sa.edu.kau.stu.drone_base_library.entity;
 
 import java.util.List;
 
@@ -12,19 +12,21 @@ public class Drone {
 	private double mass;
 	private int batteryCapacity;
 	private double batteryPercentage;
+	private PathType pathType = PathType.Simple;
 	private List<Coord> path;
 
 	public Drone() {
 	}
 
-	public Drone(String id, String name, String model, double mass, int batteryCap, double battPerc,
+	public Drone(String id, String name, String model, double mass, int capacity, double percentage, PathType pathType,
 			List<Coord> path) {
 		this.id = id;
 		this.name = name;
 		this.model = model;
 		this.mass = mass;
-		this.batteryCapacity = batteryCap;
-		this.batteryPercentage = battPerc;
+		this.batteryCapacity = capacity;
+		this.batteryPercentage = percentage;
+		this.pathType = pathType;
 		this.path = path;
 	}
 
@@ -64,16 +66,24 @@ public class Drone {
 		return batteryCapacity;
 	}
 
-	public void setBatteryCapacity(int batteryCap) {
-		this.batteryCapacity = batteryCap;
+	public void setBatteryCapacity(int capacity) {
+		this.batteryCapacity = capacity;
 	}
 
 	public double getBatteryPercentage() {
 		return batteryPercentage;
 	}
 
-	public void setBatteryPercentage(double battPerc) {
-		this.batteryPercentage = battPerc;
+	public void setBatteryPercentage(double percentage) {
+		this.batteryPercentage = percentage;
+	}
+
+	public PathType getPathType() {
+		return pathType;
+	}
+
+	public void setPathType(PathType pathType) {
+		this.pathType = pathType;
 	}
 
 	public List<Coord> getPath() {
@@ -83,6 +93,11 @@ public class Drone {
 	public void setPath(List<Coord> path) {
 		this.path = path;
 	}
+}
+
+enum PathType {
+	Simple,
+	Bezier,
 }
 
 class Coord {

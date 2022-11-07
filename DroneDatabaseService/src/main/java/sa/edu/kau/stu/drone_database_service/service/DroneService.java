@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sa.edu.kau.stu.drone_database_service.entity.Drone;
+import sa.edu.kau.stu.drone_base_library.entity.Drone;
 import sa.edu.kau.stu.drone_database_service.repository.DroneRepository;
 
 @Service

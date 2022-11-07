@@ -5,6 +5,7 @@
 		"mass": 240,
 		"batteryCapacity": 5000,
 		"batteryPercentage": 0.05,
+		"pathType": "Simple",
 		"path": [
 			{
 				"x": 0,
@@ -374,6 +375,7 @@
 		"mass": 310,
 		"batteryCapacity": 8200,
 		"batteryPercentage": 0.8,
+		"pathType": "Simple",
 		"path": [
 			{
 				"x": 0,
@@ -743,6 +745,7 @@
 		"mass": 220,
 		"batteryCapacity": 3750,
 		"batteryPercentage": 0.5,
+		"pathType": "Simple",
 		"path": [
 			{
 				"x": 0,

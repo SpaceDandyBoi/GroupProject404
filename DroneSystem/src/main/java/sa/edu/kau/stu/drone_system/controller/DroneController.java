@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import sa.edu.kau.stu.drone_database_service.entity.Drone;
+import sa.edu.kau.stu.drone_base_library.entity.Drone;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
 @RequestMapping("controller/v1/drone")

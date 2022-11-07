@@ -52,6 +52,12 @@
 
 		<dependency>
 			<groupId>sa.edu.kau.stu</groupId>
+			<artifactId>drone_base_library</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>sa.edu.kau.stu</groupId>
 			<artifactId>drone_database_service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
