@@ -11,5 +11,5 @@ import sa.edu.kau.stu.drone_base_library.configuration.BaseLibraryConfig;
 @EnableMongoRepositories("sa.edu.kau.stu.drone_database_service.repository")
 @ComponentScan("sa.edu.kau.stu.drone_database_service")
 @Import({ BaseLibraryConfig.class })
-public class SharedConfigurationReference {
+public class DatabaseServiceConfig {
 }
