@@ -98,4 +98,31 @@ public class DroneService implements IDroneService {
 		}
 		return 0;
 	}
+
+	@Override
+	public int[] getDroneXValues(Long id) {
+		Optional<Drone> drone = _droneRepo.findById(id);
+		if (drone.isPresent()) {
+			return drone.get().getXValues();
+		}
+		return new int[] {};
+	}
+
+	@Override
+	public int[] getDroneYValues(Long id) {
+		Optional<Drone> drone = _droneRepo.findById(id);
+		if (drone.isPresent()) {
+			return drone.get().getYValues();
+		}
+		return new int[] {};
+	}
+
+	@Override
+	public int[] getDroneZValues(Long id) {
+		Optional<Drone> drone = _droneRepo.findById(id);
+		if (drone.isPresent()) {
+			return drone.get().getZValues();
+		}
+		return new int[] {};
+	}
 }
