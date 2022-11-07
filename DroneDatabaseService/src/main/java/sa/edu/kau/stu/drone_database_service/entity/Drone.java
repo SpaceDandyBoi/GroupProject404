@@ -18,7 +18,7 @@ public class Drone {
 	public Drone() {
 	}
 
-	public Drone(String id, String name, String model, double mass, int capacity, double percentage,
+	public Drone(String id, String name, String model, double mass, int capacity, double percentage, PathType pathType,
 			List<Coord> path) {
 		this.id = id;
 		this.name = name;
@@ -26,6 +26,7 @@ public class Drone {
 		this.mass = mass;
 		this.batteryCapacity = capacity;
 		this.batteryPercentage = percentage;
+		this.pathType = pathType;
 		this.path = path;
 	}
 
@@ -77,6 +78,14 @@ public class Drone {
 		this.batteryPercentage = percentage;
 	}
 
+	public PathType getPathType() {
+		return pathType;
+	}
+
+	public void setPathType(PathType pathType) {
+		this.pathType = pathType;
+	}
+
 	public List<Coord> getPath() {
 		return path;
 	}
@@ -84,6 +93,11 @@ public class Drone {
 	public void setPath(List<Coord> path) {
 		this.path = path;
 	}
+}
+
+enum PathType {
+	Simple,
+	Bezier,
 }
 
 class Coord {
