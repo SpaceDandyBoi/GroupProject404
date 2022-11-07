@@ -3,20 +3,14 @@ package sa.edu.kau.stu.drone_system.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
-@RequestMapping("controller/v1/drone")
-@RestController
+@Controller
 public class DroneController {
 	@Autowired
 	IDroneService myDrones;
@@ -30,9 +24,10 @@ public class DroneController {
 		myDrones.addDrone(drone);
 	}
 
-	@GetMapping
-	public List<Drone> getAllDrone() {
-		return myDrones.getAllDrones();
+	@GetMapping("/")
+	public String getAllDrone(Model model) {
+		model.addAttribute("Drones",myDrones.getAllDrones());
+		return "index";
 	}
 
 	@GetMapping(path = "{id}")
