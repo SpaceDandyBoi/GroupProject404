@@ -55,5 +55,11 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring Framework dependencies -->
+
+		<dependency>
+			<groupId>sa.edu.kau.stu</groupId>
+			<artifactId>drone_base_library</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

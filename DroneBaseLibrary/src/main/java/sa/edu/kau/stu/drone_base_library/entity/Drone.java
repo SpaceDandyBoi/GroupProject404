@@ -1,4 +1,4 @@
-package sa.edu.kau.stu.drone_database_service.entity;
+package sa.edu.kau.stu.drone_base_library.entity;
 
 import java.util.List;
 
