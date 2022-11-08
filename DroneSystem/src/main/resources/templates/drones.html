@@ -105,7 +105,7 @@
 			Page [[${currentPage}]] of [[${totalPages}]]
 			&nbsp; &nbsp; - &nbsp;
 			<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-				<a th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+				<a th:href="@{'/drones/' + ${i}}">[[${i}]]</a>
 				&nbsp; &nbsp;
 			</span>
 		</footer>
