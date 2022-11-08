@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Drone Tracking</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<style>
+		body {
+			background-color: black;
+			color: aqua;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md mb-4" style="background-color: black">
+			  <!-- Brand -->
+			  
+			  <a class="navbar-brand" href="/">
+			  	<h1 class="" style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone Tracking System </h1>
+			  </a>
+			
+			  <!-- Toggler/collapsibe Button -->
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+			    <ul class="navbar-nav">
+			      <li class="nav-item">
+			        <a class="nav-link" th:href="@{/drones}">Drones</a>
+			      </li>
+			    </ul>
+			  </div>
+		</nav>
+
+	<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Add Drone </h1>
+	<br>
+	<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color:rgb(45, 45, 45);">
+				<h1 class = "text-center"> Add New Drone </h1>
+				<div class="card" style="background-color:rgb(45, 45, 45);">
+					<div class = "card-body">
+						<form th:action="@{/drones/new}" th:object = "${drone}"  method="POST" id="droneForm">
+							
+								<div class ="form-group">
+									<label> Drone Name </label>
+									<input
+									type = "text"
+									name = "name"
+									th:field = "*{name}"
+									class = "form-control"
+									placeholder="Enter Drone Name" 
+									/>
+								</div>
+								
+								<div class ="form-group">
+									<label> Drone Model </label>
+									<input
+									type = "text"
+									name = "model"
+									th:field = "*{model}"
+									class = "form-control"
+									placeholder="Enter Model Name" 
+									/>
+								</div>
+								
+								<div class ="form-group">
+									<label> Mass </label>
+									<input
+									type = "number"
+									name = "mass"
+									step = "0.01"
+									th:field = "*{mass}"
+									class = "form-control"
+									placeholder="Enter year" 
+									/>
+								</div>
+								
+								<div class ="form-group">
+									<label> Drone Battery Capacity </label>
+									<input
+									type = "text"
+									name = "batteryCapacity"
+									th:field = "*{batteryCapacity}"
+									class = "form-control"
+									placeholder="Enter Type" 
+									/>
+								</div>
+								
+								<div class ="form-group">
+									<label> Drone Battery Percentage </label>
+									<input
+									type = "text"
+									name = "batteryPercentage"
+									th:field = "*{batteryPercentage}"
+									class = "form-control"
+									placeholder="Enter Color" 
+									/>
+								</div>
+								
+								
+								
+								<div class ="form-group">
+									<label> Path Type </label>
+									<select name="pathType" id="pathType" class="form-select" th:field = "*{pathType}">
+		                                  <option selected value="Simple">Simple</option>
+		                                  <option value="Bezier">Bezier</option>
+		                           </select>
+								</div>
+								
+								<div class ="form-group">
+									<label> Path point number </label>
+									<input
+									type = "number"
+									name = "pathCount"
+									th:field = "${pathCount.response}"
+									class = "form-control"
+									placeholder="Enter points number" 
+									/>
+								</div>
+								<button class = "btn btn-primary mb-3" type="submit" id="submit">Submit</button>
+							</form>
+						</div>
+							
+							
+							
+							
+				
+							
+								
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+
+</html>

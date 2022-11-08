@@ -1,17 +1,23 @@
 package sa.edu.kau.stu.drone_system.controller;
 
-public class StringResponseWrapper {
-	private String response;
+import javax.xml.ws.Response;
 
-	public StringResponseWrapper(String response) {
+public class StringResponseWrapper {
+	private int response;
+	
+	public StringResponseWrapper() {
+		
+	}
+	
+	public StringResponseWrapper(int response) {
 		this.response = response;
 	}
 
-	public String getResponse() {
+	public int getResponse() {
 		return response;
 	}
 
-	public void setResponse(String response) {
+	public void setResponse(int response) {
 		this.response = response;
 	}
 }

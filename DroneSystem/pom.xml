@@ -61,13 +61,13 @@
 			<artifactId>drone_database_service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-<!--
+
 		<dependency>
 			<groupId>sa.edu.kau.stu</groupId>
 			<artifactId>path_service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
--->
+
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>plotly.js</artifactId>

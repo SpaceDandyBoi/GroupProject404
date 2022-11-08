@@ -1,6 +1,9 @@
 package sa.edu.kau.stu.drone_system.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
+import sa.edu.kau.stu.drone_base_library.path.Coord;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
 //@RequestMapping("controller/v1/drone")
@@ -27,10 +31,13 @@ public class DroneController {
 	}
 
 	// **************************************************************
-	// /
-	// **************************************************************
 
-	// dashboard
+	
+	//							/
+	//**************************************************************
+	
+	//dashboard
+
 	@GetMapping("/")
 	public String getAllDrone(Model model) {
 		model.addAttribute("Drones", myDrones.getAllDrones());
@@ -47,7 +54,9 @@ public class DroneController {
 		return dronesPage(1, model);
 	}
 
-	// pages
+			
+	//pages
+
 	@GetMapping("/drones/{page}")
 	public String dronesPage(@PathVariable("page") int currentPage, Model model) {
 		Page<Drone> page = myDrones.getPagedDrones(currentPage);
@@ -91,14 +100,40 @@ public class DroneController {
 	// **************************************************************
 
 	// use this when new_drone.html is ready:
-	@GetMapping("/drones/new")
+	@GetMapping(path = "/drones/new")
 	public String newDronePage(Model model) {
+		Drone drone = new Drone();
+		
+		StringResponseWrapper r = new  StringResponseWrapper(1);
+		model.addAttribute("drone", drone);
+		model.addAttribute("pathCount", r);
 		return "new_drone";
 	}
 
 	@PostMapping(path = "/drones/new")
-	public void addDrone(@RequestBody Drone drone) {
-		myDrones.addDrone(drone);
+	public String addDrone(Model model, @ModelAttribute("drone") Drone drone, @ModelAttribute("pathCount") StringResponseWrapper r) {
+		
+		Coord coord = new Coord();
+		model.addAttribute("coord", coord);
+		drone.setPath(new ArrayList());
+		//myDrones.addDrone(drone);
+		return addPathCheck(model, drone, r.getResponse());
+	}
+	
+	@PostMapping(path = "/path/new/{pathCount}")
+	public String addPathCheck(Model model, @ModelAttribute("drone") Drone drone, @PathVariable("Count") int pathCount) {
+		System.out.println(pathCount);
+		if(pathCount == 0) {
+			myDrones.addDrone(drone);
+			return "redirect:/drones";
+		}else if(model.getAttribute("coord") != null) {
+			drone.getPath().add((Coord) model.getAttribute("coord"));
+			System.out.println(drone.getPath());
+		}
+		
+		model.addAttribute("drone", drone);
+		model.addAttribute("Count",pathCount-1);
+		return "new_path";
 	}
 
 	// **************************************************************
@@ -151,7 +186,8 @@ public class DroneController {
 	// **************************************************************
 	// /drones/delete
 	// **************************************************************
-
+	
+	
 	@GetMapping("/drones/delete/{id}")
 	public String deleteDrone(@PathVariable String id) {
 		myDrones.deleteDrone(id);
@@ -222,9 +258,9 @@ public class DroneController {
 	}
 
 	@GetMapping(path = "drones/model/{id}")
-	public StringResponseWrapper getDroneModel(@PathVariable("id") String id) {
-		StringResponseWrapper s = new StringResponseWrapper(myDrones.getDroneModel(id));
-		return s;
+	public void getDroneModel(@PathVariable("id") String id) {
+		//StringResponseWrapper s = new StringResponseWrapper(myDrones.getDroneModel(id));
+	
 	}
 
 	@GetMapping(path = "drones/mass/{id}")
