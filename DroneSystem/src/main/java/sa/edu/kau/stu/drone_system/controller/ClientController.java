@@ -111,13 +111,21 @@ public class ClientController {
 	// /view/collisions
 	// **************************************************************
 
-	// use this when collisions.html is ready
-	/*
-	 * @GetMapping("/drones/collisions")
-	 * public String collisionsPage(Model model) {
-	 * return "collisions";
-	 * }
-	 */
+	@GetMapping("/view/collisions/drones")
+	public String collisionsPage(Model model) {
+		model.addAttribute("drones", myDrones.getAllDrones());
+		model.addAttribute("collision", myDrones.getAllCollisionsDrones());
+
+		return "collisions_drones";
+	}
+
+	@GetMapping("/view/collisions/coords")
+	public String collisionsCoordsPage(Model model) {
+		model.addAttribute("drones", myDrones.getAllDrones());
+		model.addAttribute("collision", myDrones.getAllCollisionsCoords());
+
+		return "collisions_coords";
+	}
 
 	// **************************************************************
 	// /newdrone
