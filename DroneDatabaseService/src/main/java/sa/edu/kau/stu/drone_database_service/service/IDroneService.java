@@ -2,6 +2,8 @@ package sa.edu.kau.stu.drone_database_service.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
 
 public interface IDroneService {
@@ -28,4 +30,7 @@ public interface IDroneService {
 	int[] getDroneYValues(String id);
 
 	int[] getDroneZValues(String id);
+	
+	Page<Drone> getPagedDrones(int PageNumber);
+	
 }
