@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
@@ -83,7 +82,6 @@ public class DroneController {
 		return "new_drone";
 	}
 
-
 	@PostMapping(path="/drones/new")
 	public void addDrone(@RequestBody Drone drone) {
 		myDrones.addDrone(drone);
@@ -100,7 +98,6 @@ public class DroneController {
 		model.addAttribute("drone", myDrones.getDroneInfo(id));
 		return "edit_drone";
 	}
-
 
 	@PostMapping(path="/drones/editDrone/{id}")
 	public String editDrone(@PathVariable String id, @ModelAttribute("drone") Drone drone, Model model) {
@@ -130,7 +127,6 @@ public class DroneController {
 		//implement here
 		return "edit_path";
 	}
-
 
 	@PostMapping("/drones/editPath/{id}")
 	public String editPath(@PathVariable String id, @ModelAttribute("drone") Drone drone, Model model) {
@@ -213,7 +209,6 @@ public class DroneController {
 	public boolean updateDronePath(@PathVariable("id") String id, @RequestBody Drone droneToupdate) {
 		return myDrones.updateDrone(id, droneToupdate);
 	}
-
 
 	@GetMapping(path = "drones/model/{id}")
 	public StringResponseWrapper getDroneModel(@PathVariable("id") String id) {
