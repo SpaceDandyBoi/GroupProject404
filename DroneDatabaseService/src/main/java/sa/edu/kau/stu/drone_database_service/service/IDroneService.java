@@ -33,4 +33,8 @@ public interface IDroneService {
 	
 	Page<Drone> getPagedDrones(int PageNumber);
 	
+	int[][] getAllCollisionsCoords();
+	
+	String[][] getAllCollisionsDrones();
+
 }

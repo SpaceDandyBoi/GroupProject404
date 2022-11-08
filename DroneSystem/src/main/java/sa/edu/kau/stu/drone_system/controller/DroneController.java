@@ -69,16 +69,7 @@ public class DroneController {
 	//							/drones/id
 	//**************************************************************
 	
-	//use this when view_drone.html is ready
 
-	/*
-	 * @GetMapping("/drones/id/{id}")
-	 * public String viewDronePage(Model model) {
-	 * return "viewDrone";
-	 * }
-	 */
-
-	// this one will be deleted later:
 	@GetMapping(path = "/drone/{id}")
 	public String getDroneById(@PathVariable String id, Model model) {
 		model.addAttribute("_drone", myDrones.getDroneInfo(id));
@@ -91,7 +82,7 @@ public class DroneController {
 	}
 
 	// **************************************************************
-	// /drones/new
+	// 						/drones/new
 	// **************************************************************
 
 	// use this when new_drone.html is ready:
@@ -167,19 +158,39 @@ public class DroneController {
 	// **************************************************************
 
 	// use this when collisions.html is ready
-	/*
-	 * @GetMapping("/drones/collisions")
-	 * public String collisionsPage(Model model) {
-	 * return "collisions";
-	 * }
-	 */
+	
+	  @GetMapping("/collisions/drones")
+	  public String collisionsPage(Model model) {
+		  //model.addAttribute("drones",myDrones.getAllCollisionsDrones());
+		  model.addAttribute("drones", myDrones.getAllDrones());
+		  model.addAttribute("collision", myDrones.getAllCollisionsDrones());
 
+		  return "collisions_drones";
+	  }
+	  
+	  @GetMapping("/collisions/coords")
+	  public String collisionsCoordsPage(Model model) {
+		  model.addAttribute("drones", myDrones.getAllDrones());
+		  model.addAttribute("collision", myDrones.getAllCollisionsCoords());
+
+
+		  return "collisions_coords";
+	  }
+
+
+
+/*
 	// this one will be deleted later:
-	@GetMapping(path = "/drones/collisions")
+	@GetMapping(path="/drones/collisions")
 	public List<Drone> collisionsPage() {
+	//public String[][] collisionsPage() {
+
 		// implmement here
-		return null;
+		//myDrones.getAllCollisionsDrones();
+		
+		return myDrones.getAllDrones();
 	}
+	*/
 
 	// **************************************************************
 	// /map
