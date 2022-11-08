@@ -57,14 +57,12 @@
 </head>
 
 <body>
-	<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> List Drones </h1>
 
-
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark mb-4" style="background-color:rgb(45, 45, 45)">
+	<nav class="navbar navbar-expand-md mb-4" style="background-color: black">
 			  <!-- Brand -->
 			  
 			  <a class="navbar-brand" href="/">
-			  	<h1 class="" style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone Tracking </h1>
+			  	<h1 class="" style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone Tracking System </h1>
 			  </a>
 			
 			  <!-- Toggler/collapsibe Button -->
@@ -133,67 +131,6 @@
 
 </body>
 
-<script th:inline="javascript">
-
-    var stuff = [[${_drone}]];
-
-    var pointCount = 59;
-
-
-
-        var xA=[];
-        var yA=[];
-        var zA=[];
-        var cA=[];
-        for (var i = 0; i < pointCount; i++) {
-
-
-	<br>
-
-	<div style="display: flex">
-		<div style="margin-left: 5%">
-			<p th:text="${_drone.name}" style="margin-top: 3%; font-size: x-large; font-weight: bold; display: inline">
-			</p>
-
-			<p th:text="${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'"
-				style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold;">
-			</p>
-
-			<br>
-
-			<br>
-
-			<div style="display: flex">
-				<div>
-					<p style="display: inline">model:</p>
-					<p th:text="${_drone.model}"></p>
-				</div>
-
-				<div style="margin-left: 60%">
-					<p style="display: inline">mass:</p>
-					<p th:text="${_drone.mass}"></p>
-				</div>
-
-			</div>
-
-			<p style="display: inline">batteryCapacity:</p>
-
-			<p th:text="${_drone.batteryCapacity}"></p>
-
-			<p style="display: inline">ID:</p>
-
-			<p th:text="${_drone.id}"></p>
-
-			<a style="margin-bottom: 3%" th:href="@{/update/{id}(id=${_drone.id})}" class="btn btn-primary">Update</a>
-
-			<a style="float: right; margin-right: 6%; margin-bottom: 3%" th:href="@{/delete/{id}(id=${_drone.id})}"
-				class="btn btn-danger">Delete</a>
-		</div>
-
-		<div id="plot" name="plot">
-		</div>
-	</div>
-</body>
 
 <script th:inline="javascript">
 	var stuff = [[${_drone}]];
