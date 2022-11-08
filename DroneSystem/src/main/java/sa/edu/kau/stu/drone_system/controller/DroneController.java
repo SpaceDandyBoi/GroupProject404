@@ -25,38 +25,38 @@ public class DroneController {
 	public DroneController(IDroneService _droneService) {
 	}
 
-	//**************************************************************
-	//							/
-	//**************************************************************
+	// **************************************************************
+	// /
+	// **************************************************************
 
-	//use this when drones.html is ready
+	// use this when drones.html is ready
 	/*
-	@GetMapping("/drones")
-	public String dronesPage(Model model) {
-		return "drones";
-	}
-	*/
+	 * @GetMapping("/drones")
+	 * public String dronesPage(Model model) {
+	 * return "drones";
+	 * }
+	 */
 
-	//this one will be deleted later:
+	// this one will be deleted later:
 	@GetMapping("/")
 	public String getAllDrone(Model model) {
 		model.addAttribute("Drones",myDrones.getAllDrones());
 		return "index";
 	}
 
-	//**************************************************************
-	//							/drones/id
-	//**************************************************************
+	// **************************************************************
+	// /drones/id
+	// **************************************************************
 
-	//use this when view_drone.html is ready
+	// use this when view_drone.html is ready
 	/*
-	@GetMapping("/drones/id/{id}")
-	public String viewDronePage(Model model) {
-		return "viewDrone";
-	}
-	*/
+	 * @GetMapping("/drones/id/{id}")
+	 * public String viewDronePage(Model model) {
+	 * return "viewDrone";
+	 * }
+	 */
 
-	//this one will be deleted later:
+	// this one will be deleted later:
 	@GetMapping(path = "/drone/{id}")
 	public String getDroneById(@PathVariable String id, Model model) {
 		model.addAttribute("_drone" ,myDrones.getDroneInfo(id));
@@ -68,12 +68,11 @@ public class DroneController {
 		return myDrones.updateDrone(id, droneToupdate);
 	}
 
+	// **************************************************************
+	// /drones/new
+	// **************************************************************
 
-	//**************************************************************
-	//							/drones/new
-	//**************************************************************
-
-	//use this when new_drone.html is ready:
+	// use this when new_drone.html is ready:
 	@GetMapping("/drones/new")
 	public String newDronePage(Model model) {
 		return "new_drone";
@@ -84,12 +83,11 @@ public class DroneController {
 		myDrones.addDrone(drone);
 	}
 
+	// **************************************************************
+	// /drones/editDrone
+	// **************************************************************
 
-	//**************************************************************
-	//							/drones/editDrone
-	//**************************************************************
-
-	//use this when edit_drone.html is ready:
+	// use this when edit_drone.html is ready:
 	@GetMapping("/drones/editDrone/{id}")
 	public String editDronePage(@PathVariable String id, Model model) {
 		model.addAttribute("drone", myDrones.getDroneInfo(id));
@@ -109,32 +107,32 @@ public class DroneController {
 
 		// What do do with path? keep it i believe.
 
-				myDrones.updateDrone(id, oldDrone);
+		myDrones.updateDrone(id, oldDrone);
 		return "redirect:/drones";
 
 	}
 
-	//**************************************************************
-	//							/drones/editPath
-	//**************************************************************
+	// **************************************************************
+	// /drones/editPath
+	// **************************************************************
 
-	//use this when edit_path.html is ready:
+	// use this when edit_path.html is ready:
 	@GetMapping("/drones/editPath/{id}")
 	public String editPathPage(@PathVariable String id, Model model) {
-		//implement here
+		// implement here
 		return "edit_path";
 	}
 
 	@PostMapping("/drones/editPath/{id}")
 	public String editPath(@PathVariable String id, @ModelAttribute("drone") Drone drone, Model model) {
-		//implement here
+		// implement here
 		return "redirect:/drones";
 
 	}
 
-	//**************************************************************
-	//							/drones/delete
-	//**************************************************************
+	// **************************************************************
+	// /drones/delete
+	// **************************************************************
 
 	@GetMapping("/drones/delete/{id}")
 	public String deleteDrone(@PathVariable String id) {
@@ -142,65 +140,63 @@ public class DroneController {
 		return "redirect:/drones";
 	}
 
+	// **************************************************************
+	// /drones/collisions
+	// **************************************************************
 
-	//**************************************************************
-	//							/drones/collisions
-	//**************************************************************
-
-	//use this when collisions.html is ready
+	// use this when collisions.html is ready
 	/*
-	@GetMapping("/drones/collisions")
-	public String collisionsPage(Model model) {
-		return "collisions";
-	}
-	*/
+	 * @GetMapping("/drones/collisions")
+	 * public String collisionsPage(Model model) {
+	 * return "collisions";
+	 * }
+	 */
 
-	//this one will be deleted later:
-	@GetMapping(path="/drones/collisions")
+	// this one will be deleted later:
+	@GetMapping(path = "/drones/collisions")
 	public List<Drone> collisionsPage() {
-		//implmement here
+		// implmement here
 		return null;
 	}
 
+	// **************************************************************
+	// /map
+	// **************************************************************
 
-	//**************************************************************
-	//							/map
-	//**************************************************************
-
-	//uses map.html when ready
+	// uses map.html when ready
 	@GetMapping("/map")
 	public String mapPage(Model model) {
 		return "map";
 	}
 
-	//**************************************************************
-	//							/map/id/{id}
-	//**************************************************************
+	// **************************************************************
+	// /map/id/{id}
+	// **************************************************************
 
-	//uses map.html when ready
+	// uses map.html when ready
 	@GetMapping("/map/id/{id}")
 	public String singleDroneMap(Model model) {
-		return "map"; //can it reuse map.html or we need another web page?
+		return "map"; // can it reuse map.html or we need another web page?
 	}
 
-	//**************************************************************
-	//							/map/time/{time}
-	//**************************************************************
+	// **************************************************************
+	// /map/time/{time}
+	// **************************************************************
 
-	//uses map.html when ready
+	// uses map.html when ready
 	@GetMapping("/map/time/{time}")
 	public String mapAtTime(Model model) {
-		return "map"; //can it reuse map.html or we need another web page?
+		return "map"; // can it reuse map.html or we need another web page?
 	}
 
-	//**************************************************************
-	//							useless so far
-	//**************************************************************
+	// **************************************************************
+	// useless so far
+	// **************************************************************
 
 	@GetMapping(path = "/drones/path/{id}")
-	//public List<Coord> getDronePath(@PathVariable("id") String id) {
-	//	return myDrones.getDronePath(id);
-	//}
+	// public List<Coord> getDronePath(@PathVariable("id") String id) {
+	// return myDrones.getDronePath(id);
+	// }
 
 	@PutMapping(path = "drones/path/{id}")
 	public boolean updateDronePath(@PathVariable("id") String id, @RequestBody Drone droneToupdate) {
