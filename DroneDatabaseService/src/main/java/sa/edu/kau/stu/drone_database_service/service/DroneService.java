@@ -50,15 +50,18 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public boolean updateDrone(String id, Drone droneToupdate) {
-		if (_droneRepo.findById(id).isPresent()) {
-			Drone drone = _droneRepo.findById(id).get();
-			drone.setName(droneToupdate.getName());
-			drone.setModel(droneToupdate.getModel());
-			drone.setMass(droneToupdate.getMass());
-			drone.setBatteryCapacity(droneToupdate.getBatteryCapacity());
-			drone.setBatteryPercentage(droneToupdate.getBatteryPercentage());
-			_droneRepo.save(drone);
+	public boolean updateDrone(String id, Drone update) {
+		var drone = _droneRepo.findById(id);
+		if (drone.isPresent()) {
+			var d = drone.get();
+			d.setName(update.getName());
+			d.setModel(update.getModel());
+			d.setMass(update.getMass());
+			d.setBatteryCapacity(update.getBatteryCapacity());
+			d.setBatteryPercentage(update.getBatteryPercentage());
+			d.setPathType(update.getPathType());
+			d.setPath(update.getPath());
+			_droneRepo.save(d);
 			return true;
 		} else {
 			return false;
