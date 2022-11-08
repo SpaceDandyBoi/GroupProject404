@@ -26,50 +26,46 @@ public class DroneController {
 	public DroneController(IDroneService _droneService) {
 	}
 
-	//**************************************************************
-	//							/
-	//**************************************************************
-	
-			
-	//dashvord
+	// **************************************************************
+	// /
+	// **************************************************************
 
+	// dashboard
 	@GetMapping("/")
 	public String getAllDrone(Model model) {
 		model.addAttribute("Drones", myDrones.getAllDrones());
 		return "index";
 	}
-	
-	//**************************************************************
-	//							/drones/
-	//**************************************************************
-	
+
+	// **************************************************************
+	// /drones/
+	// **************************************************************
+
 	// list all Drones
 	@GetMapping("/drones")
 	public String drones(Model model) {
 		return dronesPage(1, model);
 	}
-		
-		
-	//pages
+
+	// pages
 	@GetMapping("/drones/{page}")
 	public String dronesPage(@PathVariable("page") int currentPage, Model model) {
 		Page<Drone> page = myDrones.getPagedDrones(currentPage);
 		int totalPages = page.getTotalPages();
-	    long totalItems = page.getTotalElements();
-	    
-	    model.addAttribute("currentPage", currentPage);
-	    model.addAttribute("totalPages", totalPages);
-	    model.addAttribute("totalItems", totalItems);
+		long totalItems = page.getTotalElements();
+
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("totalItems", totalItems);
 		model.addAttribute("dronesList", page.getContent());
 		return "drones";
 	}
-		
-	
-	//**************************************************************
-	//							/drones/id
-	//**************************************************************
-	
-	//use this when view_drone.html is ready
+
+	// **************************************************************
+	// /drones/id
+	// **************************************************************
+
+	// use this when view_drone.html is ready
 
 	/*
 	 * @GetMapping("/drones/id/{id}")
@@ -215,7 +211,7 @@ public class DroneController {
 	// useless so far
 	// **************************************************************
 
-	@GetMapping(path = "/drones/path/{id}")
+	// @GetMapping(path = "/drones/path/{id}")
 	// public List<Coord> getDronePath(@PathVariable("id") String id) {
 	// return myDrones.getDronePath(id);
 	// }

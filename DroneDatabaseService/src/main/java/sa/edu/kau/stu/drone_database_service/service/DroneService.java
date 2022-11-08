@@ -129,11 +129,9 @@ public class DroneService implements IDroneService {
 		}
 		return new int[] {};
 	}
-	
-	
+
 	public Page<Drone> getPagedDrones(int PageNumber) {
-		Pageable pagable = PageRequest.of(PageNumber-1, 8, Sort.by(Sort.Direction.ASC,"name"));
+		Pageable pagable = PageRequest.of(PageNumber - 1, 8, Sort.by(Sort.Direction.ASC, "name"));
 		return _droneRepo.findAll(pagable);
 	}
-
 }

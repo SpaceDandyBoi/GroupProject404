@@ -57,78 +57,92 @@
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand-md mb-4" style="background-color: black">
-			  <!-- Brand -->
-			  
-			  <a class="navbar-brand" href="/">
-			  	<h1 class="" style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone Tracking System </h1>
-			  </a>
-			
-			  <!-- Toggler/collapsibe Button -->
-			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
-			   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-			    <ul class="navbar-nav">
-			      <li class="nav-item">
-			        <a class="nav-link" th:href="@{/drones}">Drones</a>
-			      </li>
-			    </ul>
-			  </div>
-		</nav>
+		<!-- Brand -->
+
+		<a class="navbar-brand" href="/">
+			<h1 class="" style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone Tracking System </h1>
+		</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/drones}">Drones</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 	<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone </h1>
 	<br>
 	<br>
 	<div style="display: flex">
 		<div style="margin-left: 5%">
-	 		<div class="drone_card">
-	      		<div class="droneInfo">
-				    <p th:text = "${_drone.name}" style="margin-top: 3%; font-size: x-large; font-weight: bold; display: inline"></p>
-				    <span  th:if="${_drone.batteryPercentage} &lt; 0.31">
+			<div class="drone_card">
+				<div class="droneInfo">
+					<p th:text="${_drone.name}"
+						style="margin-top: 3%; font-size: x-large; font-weight: bold; display: inline"></p>
+
+					<span th:if="${_drone.batteryPercentage} &lt; 0.31">
 						<span th:if="${_drone.batteryPercentage} &lt; 0.21">
-							<p th:text = "${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'" class="text-right font-weight-bold" style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold; color:red" ></p>
+							<p th:text="${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'"
+								class="text-right font-weight-bold"
+								style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold; color:red">
+							</p>
 						</span>
+
 						<span th:if="${_drone.batteryPercentage} &gt; 0.20">
-							<p  th:text = "${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'" class="text-right font-weight-bold" style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold; color:yellow" ></p>
+							<p th:text="${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'"
+								class="text-right font-weight-bold"
+								style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold; color:yellow">
+							</p>
 						</span>
 					</span>
+
 					<span th:if="${_drone.batteryPercentage} &gt; 0.30">
-						<p th:text = "${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'" class="text-right font-weight-bold" style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold; color:rgb(0,255,0)" ></p>
+						<p th:text="${#numbers.formatDecimal(_drone.batteryPercentage*100, 0, 0)}+'%'"
+							class="text-right font-weight-bold"
+							style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold; color:rgb(0,255,0)">
+						</p>
 					</span>
-				    <br>
-				    <br>
-				    <div style="display: flex">
-				        <div>
-				            <p style="display: inline">model:</p>
-				            <p th:text = "${_drone.model}"></p>
-				        </div>
-				        <div style="margin-left: 60%">
-				            <p style="display: inline">mass:</p>
-				            <p th:text = "${_drone.mass}"></p>
-				        </div>
-				
-				    </div>
-				    <p style="display: inline">batteryCapacity:</p>
-				    <p th:text = "${_drone.batteryCapacity}"></p>
-				    <p style="display: inline">ID:</p>
-				    <p th:text = "${_drone.id}"></p>
-				
-				    <a style="margin-bottom: 3%" th:href = "@{/update/{id}(id=${_drone.id})}"
-				       class = "btn btn-primary">Update</a>
-				
-				    <a style="float: right; margin-right: 6%; margin-bottom: 3%" th:href = "@{/delete/{id}(id=${_drone.id})}"
-				       class = "btn btn-danger">Delete</a>
+
+					<br>
+
+					<br>
+
+					<div style="display: flex">
+						<div>
+							<p style="display: inline">model:</p>
+							<p th:text="${_drone.model}"></p>
+						</div>
+
+						<div style="margin-left: 60%">
+							<p style="display: inline">mass:</p>
+							<p th:text="${_drone.mass}"></p>
+						</div>
+					</div>
+
+					<p style="display: inline">batteryCapacity:</p>
+					<p th:text="${_drone.batteryCapacity}"></p>
+					<p style="display: inline">ID:</p>
+					<p th:text="${_drone.id}"></p>
+
+					<a style="margin-bottom: 3%" th:href="@{/update/{id}(id=${_drone.id})}"
+						class="btn btn-primary">Update</a>
+
+					<a style="float: right; margin-right: 6%; margin-bottom: 3%"
+						th:href="@{/delete/{id}(id=${_drone.id})}" class="btn btn-danger">Delete</a>
 				</div>
-				
-			</div>	
+			</div>
 		</div>
+
 		<div id="plot" name="plot">
 		</div>
 	</div>
-
-
 </body>
 
 
