@@ -68,22 +68,27 @@
 						<p th:text="${drone.name}"
 							style="margin-top: 3%; font-size: x-large; font-weight: bold; display: inline"></p>
 					</a>
+
 					<p th:text="${#numbers.formatDecimal(drone.batteryPercentage*100, 0, 0)}+'%'"
 						style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold;">
 					</p>
+
 					<br>
+
 					<br>
+
 					<div style="display: flex">
 						<div>
 							<p style="display: inline">model:</p>
 							<p th:text="${drone.model}"></p>
 						</div>
+
 						<div style="margin-left: 60%">
 							<p style="display: inline">mass:</p>
 							<p th:text="${drone.mass}"></p>
 						</div>
-
 					</div>
+
 					<p style="display: inline">batteryCapacity:</p>
 					<p th:text="${drone.batteryCapacity}"></p>
 					<p style="display: inline">ID:</p>
@@ -94,40 +99,25 @@
 
 					<a style="float: right; margin-right: 6%; margin-bottom: 3%"
 						th:href="@{/delete/{id}(id=${drone.id})}" class="btn btn-danger">Delete</a>
-
 				</div>
 			</div>
 		</tr>
-
 	</div>
-
-
-
 </body>
 
 <script th:inline="javascript">
-
 	var pointCount = 59;
-
 	var data = [];
-
-
 	for (var j = 0; j < stuff.length; j++) {
 		var xA = [];
 		var yA = [];
 		var zA = [];
 		var cA = [];
 		for (var i = 0; i < pointCount; i++) {
-
-
 			xA.push(stuff[j].path[i].x);
-
 			yA.push(stuff[j].path[i].y);
-
 			zA.push(stuff[j].path[i].z);
-
 			cA.push(stuff[j].path[i].z)
-
 		}
 
 		data[j] = {
@@ -138,27 +128,17 @@
 		}
 	}
 
-
-
 	var layout = {
-
 		title: 'Drone Paths',
 		height: 600,
 		width: 600,
 
-
 		margin: {
-
 			l: 0,
-
 			r: 0,
-
 			b: 0,
-
 			t: 65
-
 		}
-
 	};
 
 	console.log(data);
