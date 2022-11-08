@@ -91,21 +91,21 @@
 							<p th:text="${drone.id}"></p>
 						</div>
 
-						<div class="text-center mt-4">
 							<div class="text-center mt-4">
 									<a  th:href = "@{/drones/update/{id}(id=${drone.id})}" class = "btn btn-primary mr-2">Update</a>
 									<a  th:href = "@{/drones/delete/{id}(id=${drone.id})}" class = "btn btn-danger ml-2">Delete</a>
 							</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 
-			<span th:each="i: ${#numbers.sequence(1, totalPages)}">
 		<footer  style="font-size: large" class="panel-footer mt-5 text-center">
 		    Total Items [[${totalItems}]]<br>
 		    Page [[${currentPage}]] of [[${totalPages}]]
 		    &nbsp; &nbsp; - &nbsp;
+		    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
 		        <a th:href="@{'/drones/' + ${i}}">[[${i}]]</a>
 		        &nbsp; &nbsp;
 		    </span>

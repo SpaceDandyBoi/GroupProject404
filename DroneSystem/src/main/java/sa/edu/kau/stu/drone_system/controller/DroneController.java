@@ -30,9 +30,9 @@ public class DroneController {
 	public DroneController(IDroneService _droneService) {
 	}
 
-	// **************************************************************
 
 	
+	//**************************************************************
 	//							/
 	//**************************************************************
 	
@@ -55,6 +55,7 @@ public class DroneController {
 	}
 
 			
+		
 	//pages
 
 	@GetMapping("/drones/{page}")
