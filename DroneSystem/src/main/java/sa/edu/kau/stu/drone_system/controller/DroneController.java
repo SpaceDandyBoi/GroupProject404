@@ -3,6 +3,7 @@ package sa.edu.kau.stu.drone_system.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,30 +26,51 @@ public class DroneController {
 	public DroneController(IDroneService _droneService) {
 	}
 
-	// **************************************************************
-	// /
-	// **************************************************************
+	//**************************************************************
+	//							/
+	//**************************************************************
+	
+			
+	//dashvord
 
-	// use this when drones.html is ready
-	/*
-	 * @GetMapping("/drones")
-	 * public String dronesPage(Model model) {
-	 * return "drones";
-	 * }
-	 */
-
-	// this one will be deleted later:
 	@GetMapping("/")
 	public String getAllDrone(Model model) {
 		model.addAttribute("Drones", myDrones.getAllDrones());
 		return "index";
 	}
+	
+	//**************************************************************
+	//							/drones/
+	//**************************************************************
+	
+	// list all Drones
+	@GetMapping("/drones")
+	public String drones(Model model) {
+		return dronesPage(1, model);
+	}
+		
+		
+	//pages
+	@GetMapping("/drones/{page}")
+	public String dronesPage(@PathVariable("page") int currentPage, Model model) {
+		Page<Drone> page = myDrones.getPagedDrones(currentPage);
+		int totalPages = page.getTotalPages();
+	    long totalItems = page.getTotalElements();
+	    
+	    model.addAttribute("currentPage", currentPage);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("totalItems", totalItems);
+		model.addAttribute("dronesList", page.getContent());
+		return "drones";
+	}
+		
+	
+	//**************************************************************
+	//							/drones/id
+	//**************************************************************
+	
+	//use this when view_drone.html is ready
 
-	// **************************************************************
-	// /drones/id
-	// **************************************************************
-
-	// use this when view_drone.html is ready
 	/*
 	 * @GetMapping("/drones/id/{id}")
 	 * public String viewDronePage(Model model) {

@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
@@ -124,6 +128,12 @@ public class DroneService implements IDroneService {
 			return drone.get().getZValues();
 		}
 		return new int[] {};
+	}
+	
+	
+	public Page<Drone> getPagedDrones(int PageNumber) {
+		Pageable pagable = PageRequest.of(PageNumber-1, 8, Sort.by(Sort.Direction.ASC,"name"));
+		return _droneRepo.findAll(pagable);
 	}
 
 }
