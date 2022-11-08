@@ -148,13 +148,46 @@
 			cA.push(stuff[j].path[i].z)
 		}
 
-		data[j] = {
+		var pathLine = {
 			type: 'scatter3d',
 			mode: 'lines+markers',
 			x: xA, y: yA, z: zA, line: {width: 6, color: '#' + Math.floor(Math.random() * 16777215).toString(16)},
-			marker: {size: 3.5, color: cA, colorscale: "Greens", cmin: -20, cmax: 50}
+			marker: {size: 3.5, color: cA, colorscale: "Greens", cmin: -20, cmax: 50},
+			name: stuff[j].name
 		}
+		data.push(pathLine);
 	}
+
+	var xA = [];
+	var yA = [];
+	var zA = [];
+
+	xA.push(1);
+	yA.push(1);
+	zA.push(1);
+
+	var Wmarkers = {
+		x: xA, y: yA, z: zA,
+		type: 'scatter3d',
+		mode: 'markers',
+		marker: {
+
+			color: 'red',
+
+			size: 10,
+
+			line: {
+
+				color: 'black)',
+
+				width: 10
+
+			}
+		},
+		name: 'warning'
+	};
+
+	data.push(Wmarkers);
 
 	var layout = {
 		title: 'Drone Paths',
