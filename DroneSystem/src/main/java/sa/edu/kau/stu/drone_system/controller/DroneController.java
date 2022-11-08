@@ -3,6 +3,7 @@ package sa.edu.kau.stu.drone_system.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ import sa.edu.kau.stu.drone_base_library.entity.Drone;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
 //@RequestMapping("controller/v1/drone")
-@RestController
+@Controller
 public class DroneController {
 	@Autowired
 	IDroneService myDrones;
@@ -29,7 +30,7 @@ public class DroneController {
 	}
 
 	//**************************************************************
-	//							/drones
+	//							/
 	//**************************************************************
 	
 	//use this when drones.html is ready
@@ -41,9 +42,10 @@ public class DroneController {
 	*/
 	
 	//this one will be deleted later:
-	@GetMapping(path="/drones")
-	public List<Drone> getAllDrone() {
-		return myDrones.getAllDrones();
+	@GetMapping("/")
+	public String getAllDrone(Model model) {
+		model.addAttribute("Drones",myDrones.getAllDrones());
+		return "index";
 	}
 	
 	//**************************************************************
@@ -59,12 +61,13 @@ public class DroneController {
 	*/
 	
 	//this one will be deleted later:
-	@GetMapping(path = "/drones/id/{id}")
-	public Drone getDroneById(@PathVariable("id") String id) {
-		return myDrones.getDroneInfo(id);
+	@GetMapping(path = "/drone/{id}")
+	public String getDroneById(@PathVariable String id, Model model) {
+		model.addAttribute("_drone" ,myDrones.getDroneInfo(id));
+		return ("drone");
 	}
 
-	@PutMapping(path = "drones/id/{id}")
+	@PutMapping(path = "update/{id}")
 	public boolean updateDrone(@PathVariable("id") String id, @RequestBody Drone droneToupdate) {
 		return myDrones.updateDrone(id, droneToupdate);
 	}
