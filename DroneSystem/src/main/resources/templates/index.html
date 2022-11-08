@@ -1,164 +1,169 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Drone Tracking</title>
-  <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <style>
-    body{
-      background-color: black;
-    }
-    .drone_card {
-      background-color: rgb(45, 45, 45);
-      border-radius: 20px;
-      padding: 3px;
-      padding-left: 0;
-      padding-right: 0;
-      margin: 20px;
-      width: 300px;
-      height: fit-content;
-      vertical-align: top;
-    }
-    .drone_container{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: flex-start;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    .droneInfo {
-      height: fit-content;
-      margin-left: 5%;
-      color: aliceblue;
-    }
-    #plot{
-      width: 600px;
-      height: 600px;
+	<meta charset="UTF-8">
+	<title>Drone Tracking</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<style>
+		body {
+			background-color: black;
+		}
 
-      position: center;
-      top:0;
-      bottom: 0;
-      left: 0;
-      right: 0;
+		.drone_card {
+			background-color: rgb(45, 45, 45);
+			border-radius: 20px;
+			padding: 3px;
+			padding-left: 0;
+			padding-right: 0;
+			margin: 20px;
+			width: 300px;
+			height: fit-content;
+			vertical-align: top;
+		}
 
-      margin: auto;
-    }
-  </style>
+		.drone_container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			align-items: flex-start;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.droneInfo {
+			height: fit-content;
+			margin-left: 5%;
+			color: aliceblue;
+		}
+
+		#plot {
+			width: 600px;
+			height: 600px;
+
+			position: center;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			margin: auto;
+		}
+	</style>
 </head>
 
 <body>
-<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> List Drones </h1>
-<br>
-<div id="plot" name="plot">
-</div>
-<br>
-<div class="drone_container">
-  <tr th:each = "drone: ${Drones}" style="align-content: center; margin-left: 50%">
-    <div class="drone_card">
-      <div class="droneInfo">
-        <a th:href = "@{/drone/{id}(id=${drone.id})}"><p th:text = "${drone.name}" style="margin-top: 3%; font-size: x-large; font-weight: bold; display: inline"></p></a>
-        <p th:text = "${#numbers.formatDecimal(drone.batteryPercentage*100, 0, 0)}+'%'" style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold;"></p>
-        <br>
-        <br>
-        <div style="display: flex">
-          <div>
-            <p style="display: inline">model:</p>
-            <p th:text = "${drone.model}"></p>
-          </div>
-          <div style="margin-left: 60%">
-            <p style="display: inline">mass:</p>
-            <p th:text = "${drone.mass}"></p>
-          </div>
+	<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> List Drones </h1>
+	<br>
+	<div id="plot" name="plot">
+	</div>
+	<br>
+	<div class="drone_container">
+		<tr th:each="drone: ${Drones}" style="align-content: center; margin-left: 50%">
+			<div class="drone_card">
+				<div class="droneInfo">
+					<a th:href="@{/drone/{id}(id=${drone.id})}">
+						<p th:text="${drone.name}"
+							style="margin-top: 3%; font-size: x-large; font-weight: bold; display: inline"></p>
+					</a>
+					<p th:text="${#numbers.formatDecimal(drone.batteryPercentage*100, 0, 0)}+'%'"
+						style="display: inline; float: right; margin-right: 6%; margin-top: 2%; font-size: large; font-weight: bold;">
+					</p>
+					<br>
+					<br>
+					<div style="display: flex">
+						<div>
+							<p style="display: inline">model:</p>
+							<p th:text="${drone.model}"></p>
+						</div>
+						<div style="margin-left: 60%">
+							<p style="display: inline">mass:</p>
+							<p th:text="${drone.mass}"></p>
+						</div>
 
-        </div>
-        <p style="display: inline">batteryCapacity:</p>
-        <p th:text = "${drone.batteryCapacity}"></p>
-        <p style="display: inline">ID:</p>
-        <p th:text = "${drone.id}"></p>
+					</div>
+					<p style="display: inline">batteryCapacity:</p>
+					<p th:text="${drone.batteryCapacity}"></p>
+					<p style="display: inline">ID:</p>
+					<p th:text="${drone.id}"></p>
 
-        <a style="margin-bottom: 3%" th:href = "@{/update/{id}(id=${drone.id})}"
-           class = "btn btn-primary">Update</a>
+					<a style="margin-bottom: 3%" th:href="@{/update/{id}(id=${drone.id})}"
+						class="btn btn-primary">Update</a>
 
-        <a style="float: right; margin-right: 6%; margin-bottom: 3%" th:href = "@{/delete/{id}(id=${drone.id})}"
-           class = "btn btn-danger">Delete</a>
+					<a style="float: right; margin-right: 6%; margin-bottom: 3%"
+						th:href="@{/delete/{id}(id=${drone.id})}" class="btn btn-danger">Delete</a>
 
-      </div>
-    </div>
-  </tr>
+				</div>
+			</div>
+		</tr>
 
-</div>
+	</div>
 
 
 
 </body>
+
 <script th:inline="javascript">
 
-  var stuff = [[${Drones}]];
+	var pointCount = 59;
 
-  var pointCount = 59;
-
-  var data = [];
+	var data = [];
 
 
-  for (var j = 0; j < stuff.length; j++) {
-    var xA=[];
-    var yA=[];
-    var zA=[];
-    var cA=[];
-    for (var i = 0; i < pointCount; i++) {
+	for (var j = 0; j < stuff.length; j++) {
+		var xA = [];
+		var yA = [];
+		var zA = [];
+		var cA = [];
+		for (var i = 0; i < pointCount; i++) {
 
 
-      xA.push(stuff[j].path[i].x);
+			xA.push(stuff[j].path[i].x);
 
-      yA.push(stuff[j].path[i].y);
+			yA.push(stuff[j].path[i].y);
 
-      zA.push(stuff[j].path[i].z);
+			zA.push(stuff[j].path[i].z);
 
-      cA.push(stuff[j].path[i].z)
+			cA.push(stuff[j].path[i].z)
 
-    }
+		}
 
-    data[j]={
-      type: 'scatter3d',
-      mode: 'lines+markers',
-      x: xA, y: yA, z: zA, line: {width: 6, color: '#'+Math.floor(Math.random()*16777215).toString(16)},
-      marker: {size: 3.5, color: cA, colorscale: "Greens", cmin: -20, cmax: 50}
-    }
-  }
+		data[j] = {
+			type: 'scatter3d',
+			mode: 'lines+markers',
+			x: xA, y: yA, z: zA, line: {width: 6, color: '#' + Math.floor(Math.random() * 16777215).toString(16)},
+			marker: {size: 3.5, color: cA, colorscale: "Greens", cmin: -20, cmax: 50}
+		}
+	}
 
 
 
-  var layout = {
+	var layout = {
 
-    title: 'Drone Paths',
-    height: 600,
-    width: 600,
-
-
-    margin: {
-
-      l: 0,
-
-      r: 0,
-
-      b: 0,
-
-      t: 65
-
-    }
-
-  };
-
-  console.log(data);
-
-  Plotly.newPlot('plot',data,layout);
+		title: 'Drone Paths',
+		height: 600,
+		width: 600,
 
 
+		margin: {
 
+			l: 0,
+
+			r: 0,
+
+			b: 0,
+
+			t: 65
+
+		}
+
+	};
+
+	console.log(data);
+
+	Plotly.newPlot('plot', data, layout);
 </script>
+
 </html>
