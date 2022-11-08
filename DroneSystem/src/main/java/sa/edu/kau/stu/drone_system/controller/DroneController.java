@@ -40,7 +40,7 @@ public class DroneController {
 	// this one will be deleted later:
 	@GetMapping("/")
 	public String getAllDrone(Model model) {
-		model.addAttribute("Drones",myDrones.getAllDrones());
+		model.addAttribute("Drones", myDrones.getAllDrones());
 		return "index";
 	}
 
@@ -59,7 +59,7 @@ public class DroneController {
 	// this one will be deleted later:
 	@GetMapping(path = "/drone/{id}")
 	public String getDroneById(@PathVariable String id, Model model) {
-		model.addAttribute("_drone" ,myDrones.getDroneInfo(id));
+		model.addAttribute("_drone", myDrones.getDroneInfo(id));
 		return ("drone");
 	}
 
@@ -78,7 +78,7 @@ public class DroneController {
 		return "new_drone";
 	}
 
-	@PostMapping(path="/drones/new")
+	@PostMapping(path = "/drones/new")
 	public void addDrone(@RequestBody Drone drone) {
 		myDrones.addDrone(drone);
 	}
@@ -94,7 +94,7 @@ public class DroneController {
 		return "edit_drone";
 	}
 
-	@PostMapping(path="/drones/editDrone/{id}")
+	@PostMapping(path = "/drones/editDrone/{id}")
 	public String editDrone(@PathVariable String id, @ModelAttribute("drone") Drone drone, Model model) {
 
 		Drone oldDrone = myDrones.getDroneInfo(id);
