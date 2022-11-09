@@ -213,7 +213,7 @@ public class ClientController {
 		// What do do with path? keep it i believe.
 
 		myDrones.updateDrone(id, drone);
-		return "redirect:/drones";
+		return "redirect:/view/all";
 	}
 
 	// **************************************************************
