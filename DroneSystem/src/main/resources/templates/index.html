@@ -149,6 +149,7 @@
 </body>
 
 <script th:inline="javascript">
+	var Cmarkers = [[${collision}]];
 	var stuff = [[${Drones}]];
 	var pointCount = 59;
 	var data = [];
@@ -173,14 +174,16 @@
 		}
 		data.push(pathLine);
 	}
+	console.log(Cmarkers.length);
 
 	var xA = [];
 	var yA = [];
 	var zA = [];
-
-	xA.push(1);
-	yA.push(1);
-	zA.push(1);
+	for (var j = 0; j < Cmarkers.length; j++) {
+		xA.push(Cmarkers[j][0]);
+		yA.push(Cmarkers[j][1]);
+		zA.push(Cmarkers[j][2]);
+	}
 
 	var Wmarkers = {
 		x: xA, y: yA, z: zA,
@@ -194,10 +197,11 @@
 				width: 10
 			}
 		},
-		name: 'warning'
+		name: 'Collision'
 	};
 
 	data.push(Wmarkers);
+
 
 	var layout = {
 		title: 'Drone Paths',

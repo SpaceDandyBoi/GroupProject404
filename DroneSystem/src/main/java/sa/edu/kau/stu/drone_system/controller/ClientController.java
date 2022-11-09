@@ -28,6 +28,7 @@ public class ClientController {
 	@GetMapping("/")
 	public String getAllDrone(Model model) {
 		model.addAttribute("Drones", myDrones.getAllDrones());
+		model.addAttribute("collision", myDrones.getAllCollisionsCoords());
 		return "index";
 	}
 
