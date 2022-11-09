@@ -33,5 +33,11 @@
 			<scope>compile</scope>
 		</dependency>
 		<!-- Spring Framework dependencies -->
+		<!-- Provides access to the JSON serializer/deserializer used by spring -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.14.0</version>
+		</dependency>
 	</dependencies>
 </project>
