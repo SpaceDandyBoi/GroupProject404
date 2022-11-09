@@ -217,7 +217,6 @@ public class DroneService implements IDroneService {
 	 * [i][1] is String name of drone 2
 	 * [i][2] is String time of collision 
 	 * 
-
 	 * NOTE: time is in String format.
 	 */
 	public String[][] getAllCollisionsDrones() {
@@ -274,7 +273,7 @@ public class DroneService implements IDroneService {
 		String[][] dronePairs = new String[collisions.size()/2][3];
 		for (int i = 0, d = 0, t = 0; d < collisions.size(); i++, t++,d++) {
 			dronePairs[i][0] = collisions.get(d).getName();
-			dronePairs[i][1] = collisions.get(d++).getName();
+			dronePairs[i][1] = collisions.get(++d).getName();
 			dronePairs[i][2] = times.get(t).toString();
 		}
 		
