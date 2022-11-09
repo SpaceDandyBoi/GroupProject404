@@ -57,6 +57,7 @@ public class DroneController {
 	@GetMapping("/drones/collisions")
 	public HashMap<String, HashMap<String,String>> collisionsPage() {
 		HashMap<String, HashMap<String,String>> response = new HashMap<String, HashMap<String,String>>();
+
 		String[][] data = myDrones.getAllCollisionsDrones();
 		for(int i =0; i < data.length; i++) {
 			String colideName = "Collision" + (i+1);
