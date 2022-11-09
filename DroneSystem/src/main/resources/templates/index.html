@@ -190,14 +190,13 @@
 <script th:inline="javascript">
 	var Cmarkers = [[${collision}]];
 	var stuff = [[${Drones}]];
-	var pointCount = 59;
 	var data = [];
 	for (var j = 0; j < stuff.length; j++) {
 		var xA = [];
 		var yA = [];
 		var zA = [];
 		var cA = [];
-		for (var i = 0; i < pointCount; i++) {
+		for (var i = 0; i < stuff[j].path.length; i++) {
 			xA.push(stuff[j].path[i].x);
 			yA.push(stuff[j].path[i].y);
 			zA.push(stuff[j].path[i].z);
