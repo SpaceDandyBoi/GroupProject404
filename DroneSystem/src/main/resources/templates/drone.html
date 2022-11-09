@@ -10,7 +10,7 @@
 
 	<style>
 		body {
-			background-color: black;
+			background-color: #c3eaff;
 			color: aqua;
 		}
 
@@ -86,7 +86,7 @@
 		</div>
 	</nav>
 
-	<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone </h1>
+	<h1 style="margin-left: 3%; color: black; margin-top: 1%"> Drone </h1>
 	<br>
 	<br>
 	<div style="display: flex">
@@ -148,8 +148,7 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="plot" name="plot">
+		<div style="display: inline" id="plot" name="plot">
 		</div>
 	</div>
 </body>
@@ -157,12 +156,11 @@
 
 <script th:inline="javascript">
 	var stuff = [[${_drone}]];
-	var pointCount = 59;
 	var xA = [];
 	var yA = [];
 	var zA = [];
 	var cA = [];
-	for (var i = 0; i < pointCount; i++) {
+	for (var i = 0; i < stuff.path.length; i++) {
 		xA.push(stuff.path[i].x);
 		yA.push(stuff.path[i].y);
 		zA.push(stuff.path[i].z);
