@@ -52,15 +52,18 @@ public class DroneService implements IDroneService {
 	}
 
 	@Override
-	public boolean updateDrone(String id, Drone droneToupdate) {
-		if (_droneRepo.findById(id).isPresent()) {
-			Drone drone = _droneRepo.findById(id).get();
-			drone.setName(droneToupdate.getName());
-			drone.setModel(droneToupdate.getModel());
-			drone.setMass(droneToupdate.getMass());
-			drone.setBatteryCapacity(droneToupdate.getBatteryCapacity());
-			drone.setBatteryPercentage(droneToupdate.getBatteryPercentage());
-			_droneRepo.save(drone);
+	public boolean updateDrone(String id, Drone update) {
+		var drone = _droneRepo.findById(id);
+		if (drone.isPresent()) {
+			var d = drone.get();
+			d.setName(update.getName());
+			d.setModel(update.getModel());
+			d.setMass(update.getMass());
+			d.setBatteryCapacity(update.getBatteryCapacity());
+			d.setBatteryPercentage(update.getBatteryPercentage());
+			d.setPathType(update.getPathType());
+			d.setPath(update.getPath());
+			_droneRepo.save(d);
 			return true;
 		} else {
 			return false;
@@ -131,7 +134,7 @@ public class DroneService implements IDroneService {
 		}
 		return new int[] {};
 	}
-	
+
 	/*
 	 * Returns int[][] array of i collisions
 	 * [i][0] is x coordinate
@@ -154,6 +157,7 @@ public class DroneService implements IDroneService {
 				
 				//figure out the range of times that both drone paths are active in
 				//because maybe one drone starts/stops before the other
+
 				int startTimePath1 = path1.get(0).getTime();
 				int startTimePath2 = path2.get(0).getTime();
 				int stopTimePath1 = path1.get(path1.size() - 1).getTime();
@@ -206,12 +210,14 @@ public class DroneService implements IDroneService {
 		
 	}
 	
+
 	/*
 	 * Returns String[][] array of i collisions
 	 * [i][0] is String name of drone 1
 	 * [i][1] is String name of drone 2
 	 * [i][2] is String time of collision 
 	 * 
+
 	 * NOTE: time is in String format.
 	 */
 	public String[][] getAllCollisionsDrones() {
@@ -228,6 +234,7 @@ public class DroneService implements IDroneService {
 				
 				//figure out the range of times that both drone paths are active in
 				//because maybe one drone starts/stops before the other
+
 				int startTimePath1 = path1.get(0).getTime();
 				int startTimePath2 = path2.get(0).getTime();
 				int stopTimePath1 = path1.get(path1.size() - 1).getTime();
@@ -292,9 +299,9 @@ public class DroneService implements IDroneService {
 		
 	}
 	
+
 	public Page<Drone> getPagedDrones(int PageNumber) {
-		Pageable pagable = PageRequest.of(PageNumber-1, 8, Sort.by(Sort.Direction.ASC,"name"));
+		Pageable pagable = PageRequest.of(PageNumber - 1, 8, Sort.by(Sort.Direction.ASC, "name"));
 		return _droneRepo.findAll(pagable);
 	}
-
 }
