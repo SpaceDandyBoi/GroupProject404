@@ -149,8 +149,12 @@ public class Drone {
 	public void addPointToPath(int x, int y, int z, int time) {
 		
 		boolean flag = false;
-		for(Coord d: this.path) {
-			if(d.getX() == x && d.getY() == y & d.getZ() == z && d.getTime() == time) {
+		for(int i = 0; i < this.path.size(); i++) {
+			if(this.path.get(i).getX() == x && this.path.get(i).getY() == y & this.path.get(i).getZ() == z && this.path.get(i).getTime() == time) {
+				this.path.get(i).setX(x);
+				this.path.get(i).setX(y);
+				this.path.get(i).setX(z);
+				this.path.get(i).setX(time);
 				flag = true;
 				break;
 			}
