@@ -3,6 +3,7 @@ package sa.edu.kau.stu.drone_system.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,6 +25,7 @@ public class DroneController {
 	@Autowired
 	public DroneController(IDroneService _droneService) {
 	}
+
 
 	// **************************************************************
 	// /drones
@@ -48,12 +50,33 @@ public class DroneController {
 	// /drones/collisions
 	// **************************************************************
 
+	// use this when collisions.html is ready
+	
+	  @GetMapping("/collisions/drones")
+	  public String collisionsPage(Model model) {
+		  //model.addAttribute("drones",myDrones.getAllCollisionsDrones());
+		  model.addAttribute("drones", myDrones.getAllDrones());
+		  model.addAttribute("collision", myDrones.getAllCollisionsDrones());
+
+		  return "collisions_drones";
+	  }
+	  
+	  @GetMapping("/collisions/coords")
+	  public String collisionsCoordsPage(Model model) {
+		  model.addAttribute("drones", myDrones.getAllDrones());
+		  model.addAttribute("collision", myDrones.getAllCollisionsCoords());
+
+
+		  return "collisions_coords";
+	  }
+
 	// Return a list of drones that would collide a given time
 	@GetMapping("/drones/collisions")
 	public List<Drone> collisionsPage() {
 		// TODO: Implmement here
 		return null;
 	}
+	
 
 	// **************************************************************
 	// /drones/{id}

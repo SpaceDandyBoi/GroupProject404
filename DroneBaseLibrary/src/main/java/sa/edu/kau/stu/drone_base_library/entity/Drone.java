@@ -120,12 +120,16 @@ public class Drone {
 		}
 		return ret;
 	}
-
-	// Get Coord at requested time
+	
+	
+	//Get Coord at requested time
 	public Coord getXYZValuesAtTime(int time) {
+		
 		for (int i = 0; i < path.size(); i++) {
-			if (path.get(i).getTime() == time) {
+			if(path.get(i).getTime() == time) {
 				return path.get(i);
+
+
 			}
 		}
 		return null;
