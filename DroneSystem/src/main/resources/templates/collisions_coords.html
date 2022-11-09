@@ -6,7 +6,53 @@
 	<title>Drone Tracking</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style>
+			body {
+				background-color: black;
+			}
+	
+			.drone_card {
+				background-color: rgb(45, 45, 45);
+				border-radius: 20px;
+				padding: 3px;
+				padding-left: 0;
+				padding-right: 0;
+				margin: 20px;
+				width: 300px;
+				height: fit-content;
+				vertical-align: top;
+			}
+	
+			.drone_container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				align-items: flex-start;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+	
+			.droneInfo {
+				height: fit-content;
+				margin-left: 5%;
+				color: aliceblue;
+			}
+	
+			#plot {
+				width: 600px;
+				height: 600px;
+	
+				position: center;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+	
+				margin: auto;
+			}
+		</style>
 </head>
+
 
 <body>
 	<nav class="navbar navbar-expand-md mb-4" style="background-color: black">
@@ -24,22 +70,32 @@
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/view/all}">Drones</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/newdrones}">Add Drone</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/drones}">View Collided Drones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/coords}">View Collided Coordinates</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<h1> List Drones </h1>
+			<h1 style="color: aquamarine; margin-bottom:1em; margin-left:2em;"> List Drones </h1>
 		</div>
-
+	</div>
+	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
 				<a th:href="@{/newdrone}" class="btn btn-primary btn-sm mb-3"> Add Drone </a>
 			</div>
 		</div>
 
-		<table class="table table-striped table-bordered">
+		<table class="table table-striped table-bordered" style="color:white; text-align:center;">
 			<thead class="table-dark">
 				<tr>
 					<th> x </th>

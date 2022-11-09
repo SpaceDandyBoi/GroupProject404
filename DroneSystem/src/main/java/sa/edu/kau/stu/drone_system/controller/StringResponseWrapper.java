@@ -3,21 +3,21 @@ package sa.edu.kau.stu.drone_system.controller;
 import javax.xml.ws.Response;
 
 public class StringResponseWrapper {
-	private int response;
+	private String response;
 	
 	public StringResponseWrapper() {
 		
 	}
 	
-	public StringResponseWrapper(int response) {
+	public StringResponseWrapper(String response) {
 		this.response = response;
 	}
 
-	public int getResponse() {
+	public String getResponse() {
 		return response;
 	}
 
-	public void setResponse(int response) {
+	public void setResponse(String response) {
 		this.response = response;
 	}
 }

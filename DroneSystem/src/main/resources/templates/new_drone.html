@@ -32,9 +32,18 @@
 			  </button>
 			   <div class="collapse navbar-collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav">
-			      <li class="nav-item">
-			        <a class="nav-link" th:href="@{/drones}">Drones</a>
-			      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" th:href="@{/drones}">Drones</a>
+				      </li>
+				      <li class="nav-item">
+						<a class="nav-link" th:href="@{/newdrones}">Add Drone</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/view/collisions/drones}">View Collided Drones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/view/collisions/coords}">View Collided Coordinates</a>
+					</li>
 			    </ul>
 			  </div>
 		</nav>
@@ -48,14 +57,14 @@
 				<h1 class = "text-center"> Add New Drone </h1>
 				<div class="card" style="background-color:rgb(45, 45, 45);">
 					<div class = "card-body">
-						<form th:action="@{/drones/new}" th:object = "${drone}"  method="POST" id="droneForm">
+						<form action="http://localhost:8080/newdrone"  method="POST" id="droneForm">
 							
 								<div class ="form-group">
 									<label> Drone Name </label>
 									<input
 									type = "text"
 									name = "name"
-									th:field = "*{name}"
+				
 									class = "form-control"
 									placeholder="Enter Drone Name" 
 									/>
@@ -66,7 +75,7 @@
 									<input
 									type = "text"
 									name = "model"
-									th:field = "*{model}"
+							
 									class = "form-control"
 									placeholder="Enter Model Name" 
 									/>
@@ -78,55 +87,107 @@
 									type = "number"
 									name = "mass"
 									step = "0.01"
-									th:field = "*{mass}"
+									value=0
 									class = "form-control"
-									placeholder="Enter year" 
+									placeholder="Enter Mass" 
 									/>
 								</div>
 								
 								<div class ="form-group">
 									<label> Drone Battery Capacity </label>
 									<input
-									type = "text"
+									type = "number"
 									name = "batteryCapacity"
-									th:field = "*{batteryCapacity}"
+									step = "1"
+									value=0
 									class = "form-control"
-									placeholder="Enter Type" 
+									placeholder="Battery Capacity" 
 									/>
 								</div>
 								
 								<div class ="form-group">
 									<label> Drone Battery Percentage </label>
 									<input
-									type = "text"
+									type = "number"
 									name = "batteryPercentage"
-									th:field = "*{batteryPercentage}"
+									value=0
+									step = "0.01"
+									max="1"
+									min="0"
 									class = "form-control"
-									placeholder="Enter Color" 
+									placeholder="Battery Percentage" 
 									/>
 								</div>
 								
 								
 								
-								<div class ="form-group">
+								<div class ="form-group" style="margin-top:2em;">
 									<label> Path Type </label>
-									<select name="pathType" id="pathType" class="form-select" th:field = "*{pathType}">
+									<select name="pathType" id="pathType" class="form-select">
 		                                  <option selected value="Simple">Simple</option>
 		                                  <option value="Bezier">Bezier</option>
 		                           </select>
 								</div>
 								
-								<div class ="form-group">
-									<label> Path point number </label>
-									<input
-									type = "number"
-									name = "pathCount"
-									th:field = "${pathCount.response}"
-									class = "form-control"
-									placeholder="Enter points number" 
-									/>
+								<div id="readroot"  style="display: none">
+								<div class="row">
+								    <div class ="col-3">
+										<label> time </label>
+										<input
+										type = "number"
+										name = "array[]"
+										step = "1"
+										class = "form-control"
+										placeholder="time"
+		
+										/>
+									</div>
+									
+									<div class ="col-3">
+										<label> x </label>
+										<input
+										type = "number"
+										name = "array[]"
+										class = "form-control"
+										placeholder="Enter x"
+		
+										/>
+									</div>
+									
+									<div class ="col-3">
+										<label> y </label>
+										<input
+										type = "number"
+										name = "array[]"
+										class = "form-control"
+										placeholder="Enter y"
+		
+										/>
+									</div>
+									
+									<div class ="col-3">
+										<label> z </label>
+										<input
+										type = "number"
+										name = "array[]"
+										class = "form-control"
+										placeholder="Enter z"
+						
+										/>
+									</div>
 								</div>
-								<button class = "btn btn-primary mb-3" type="submit" id="submit">Submit</button>
+								</div>
+								
+								<span id="writeroot"></span>
+								
+								<div class="mt-3">
+									<input class = "btn btn-primary mb-3 float-right" type="button" id="more" value="Add More Point" onclick="moreFields()"/>
+								</div>
+								
+								<div class="text-center" style="clear:both; margin-top:2em">
+									<button class = "btn btn-primary mb-3" type="submit" id="submit">Submit</button>
+								</div>
+								
 							</form>
 						</div>
 							
@@ -142,7 +203,29 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
+
+<script>
+	var counter = 0;
+	
+	function moreFields() {
+		counter++;
+		var newFields = document.getElementById('readroot').cloneNode(true);
+		newFields.id = '';
+		newFields.style.display = 'block';
+		var newField = newFields.childNodes;
+		for (var i=0;i<newField.length;i++) {
+			var theName = newField[i].name
+			if (theName)
+				newField[i].name = theName;
+		}
+		var insertHere = document.getElementById('writeroot');
+		insertHere.parentNode.insertBefore(newFields,insertHere);
+	}
+	
+	window.onload = moreFields;
+</script>
+
 
 </body>
 
