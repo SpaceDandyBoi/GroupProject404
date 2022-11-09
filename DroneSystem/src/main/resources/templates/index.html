@@ -70,6 +70,15 @@
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/view/all}">Drones</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/newdrone}">Add Drone</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/drones}">View Collided Drones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/coords}">View Collided Coordinates</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -149,7 +158,6 @@
 </body>
 
 <script th:inline="javascript">
-	var Cmarkers = [[${collision}]];
 	var stuff = [[${Drones}]];
 	var data = [];
 	for (var j = 0; j < stuff.length; j++) {
@@ -173,16 +181,14 @@
 		}
 		data.push(pathLine);
 	}
-	console.log(Cmarkers.length);
 
 	var xA = [];
 	var yA = [];
 	var zA = [];
-	for (var j = 0; j < Cmarkers.length; j++) {
-		xA.push(Cmarkers[j][0]);
-		yA.push(Cmarkers[j][1]);
-		zA.push(Cmarkers[j][2]);
-	}
+
+	xA.push(1);
+	yA.push(1);
+	zA.push(1);
 
 	var Wmarkers = {
 		x: xA, y: yA, z: zA,
@@ -196,11 +202,10 @@
 				width: 10
 			}
 		},
-		name: 'Collision'
+		name: 'warning'
 	};
 
 	data.push(Wmarkers);
-
 
 	var layout = {
 		title: 'Drone Paths',

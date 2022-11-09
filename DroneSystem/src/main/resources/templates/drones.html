@@ -27,6 +27,15 @@
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/view/all}">Drones</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/newdrone}">Add Drone</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/drones}">View Collided Drones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/coords}">View Collided Coordinates</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -91,10 +100,12 @@
 							<p th:text="${drone.id}"></p>
 						</div>
 
+
 						<div class="text-center mt-4">
 							<a th:href="@{/editdrone/{id}(id=${drone.id})}" class="btn btn-primary mr-2">Update</a>
 							<a th:href="@{/deletedrone/{id}(id=${drone.id})}" class="btn btn-danger ml-2">Delete</a>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -108,6 +119,7 @@
 				<a th:href="@{'/view/all/page/' + ${i}}">[[${i}]]</a>
 				&nbsp; &nbsp;
 			</span>
+
 		</footer>
 	</div>
 </body>

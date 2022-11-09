@@ -1,6 +1,9 @@
 package sa.edu.kau.stu.drone_system.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -27,6 +30,7 @@ public class DroneController {
 	}
 
 
+
 	// **************************************************************
 	// /drones
 	// **************************************************************
@@ -35,6 +39,7 @@ public class DroneController {
 	public List<Drone> getDrones() {
 		return myDrones.getAllDrones();
 	}
+
 
 	@PostMapping("/drones")
 	public void postDrones(@RequestBody Drone drone) {
@@ -45,6 +50,7 @@ public class DroneController {
 	// @PutMapping("/drones")
 	// @PatchMapping("/drones")
 	// @DeleteMapping("/drones")
+
 
 	// **************************************************************
 	// /drones/collisions
@@ -124,10 +130,12 @@ public class DroneController {
 		return myDrones.updateDrone(id, droneToupdate);
 	}
 
+
 	@GetMapping("/drones/{id}/model")
 	public StringResponseWrapper getDroneModel(@PathVariable("id") String id) {
 		StringResponseWrapper s = new StringResponseWrapper(myDrones.getDroneModel(id));
 		return s;
+
 	}
 
 	@GetMapping("/drones/{id}/mass")

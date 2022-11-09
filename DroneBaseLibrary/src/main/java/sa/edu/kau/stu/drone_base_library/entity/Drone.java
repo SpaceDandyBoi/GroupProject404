@@ -1,5 +1,6 @@
 package sa.edu.kau.stu.drone_base_library.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -31,6 +32,16 @@ public class Drone {
 		this.batteryPercentage = percentage;
 		this.pathType = pathType;
 		this.path = path;
+	}
+	
+	public Drone(String name, String model, double mass, int capacity, double percentage, PathType pathType) {
+		this.name = name;
+		this.model = model;
+		this.mass = mass;
+		this.batteryCapacity = capacity;
+		this.batteryPercentage = percentage;
+		this.pathType = pathType;
+		this.path = new ArrayList<>();
 	}
 
 	public String getId() {
@@ -133,5 +144,21 @@ public class Drone {
 			}
 		}
 		return null;
+	}
+	
+	public void addPointToPath(int x, int y, int z, int time) {
+		
+		boolean flag = false;
+		for(Coord d: this.path) {
+			if(d.getX() == x && d.getY() == y & d.getZ() == z && d.getTime() == time) {
+				flag = true;
+				break;
+			}
+		}
+		
+		if(!flag) {
+			path.add(new Coord(x,y,z,time));
+		}
+		
 	}
 }

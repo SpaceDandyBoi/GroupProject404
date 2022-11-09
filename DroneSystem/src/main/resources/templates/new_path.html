@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Drone Tracking</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<style>
+		body {
+			background-color: black;
+			color: aqua;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md mb-4" style="background-color: black">
+			  <!-- Brand -->
+			  
+			  <a class="navbar-brand" href="/">
+			  	<h1 class="" style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Drone Tracking System </h1>
+			  </a>
+			
+			  <!-- Toggler/collapsibe Button -->
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+			    <ul class="navbar-nav">
+			      <li class="nav-item">
+			        <a class="nav-link" th:href="@{/drones}">Drones</a>
+			      </li>
+			      <li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/drones}">View Collided Drones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/view/collisions/coords}">View Collided Coordinates</a>
+				</li>
+			    </ul>
+			  </div>
+		</nav>
+
+	<h1 style="margin-left: 3%; color: aquamarine; margin-top: 1%"> Add Drone </h1>
+	<br>
+	<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color:rgb(45, 45, 45);">
+				<h1 class = "text-center"> Add New Drone </h1>
+				<div class="card" style="background-color:rgb(45, 45, 45);">
+					<div class = "card-body">
+						<form th:action="@{/path/new/{pathCount} (path=${pathcount})}" th:object = "${coord}" method="POST">
+							<div class="row">
+								<div class ="col-3">
+									<label> t </label>
+									<input
+									type = "text"
+									name = "t"
+									th:field = "*{time}"
+									class = "form-control"
+									placeholder="Enter t" 
+									/>
+								</div>
+								
+								<div class ="col-3">
+									<label> x </label>
+									<input
+									type = "text"
+									name = "x"
+									th:field = "*{x}"
+									class = "form-control"
+									placeholder="Enter x" 
+									/>
+								</div>
+								
+								<div class ="col-3">
+									<label> y </label>
+									<input
+									type = "text"
+									name = "y"
+									th:field = "*{y}"
+									class = "form-control"
+									placeholder="Enter y" 
+									/>
+								</div>
+								
+								<div class ="col-3">
+									<label> z </label>
+									<input
+									type = "text"
+									name = "z"
+									th:field = "*{z}"
+									class = "form-control"
+									placeholder="Enter z" 
+									/>
+								</div>
+							
+				
+							<button class = "btn btn-primary mb-3" type="submit" id="submit">Submit</button>
+								
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+
+</html>
