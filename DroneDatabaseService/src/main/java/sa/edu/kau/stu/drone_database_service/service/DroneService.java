@@ -192,6 +192,7 @@ public class DroneService implements IDroneService {
 		
 		if(collisions.size()==0)
 			return null;
+
 		
 		int[][] coordinates = new int[collisions.size()][3];
 		
@@ -263,12 +264,11 @@ public class DroneService implements IDroneService {
 		if(collisions.size()==0)
 			return null;
 		
-		String[][] dronePairs = new String[collisions.size()][3];
-		
-		for(int i = 0, t = 0; i < collisions.size(); i=i+2, t++) {
-			dronePairs[i][0]= collisions.get(i).getName();
-			dronePairs[i][1]= collisions.get(i+1).getName();
-			dronePairs[i][2]= times.get(t).toString();
+		String[][] dronePairs = new String[collisions.size()/2][3];
+		for (int i = 0, d = 0, t = 0; d < collisions.size(); i++, t++,d++) {
+			dronePairs[i][0] = collisions.get(d).getName();
+			dronePairs[i][1] = collisions.get(d++).getName();
+			dronePairs[i][2] = times.get(t).toString();
 		}
 		
 		return dronePairs;
