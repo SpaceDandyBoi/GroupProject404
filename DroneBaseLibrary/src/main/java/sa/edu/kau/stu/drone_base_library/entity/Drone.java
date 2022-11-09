@@ -3,6 +3,7 @@ package sa.edu.kau.stu.drone_base_library.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 
 import sa.edu.kau.stu.drone_base_library.path.Coord;
@@ -108,6 +109,7 @@ public class Drone {
 		this.path = path;
 	}
 
+	@JsonIgnore
 	public int[] getXValues() {
 		var ret = new int[path.size()];
 		for (int i = 0; i < path.size(); i++) {
@@ -116,6 +118,7 @@ public class Drone {
 		return ret;
 	}
 
+	@JsonIgnore
 	public int[] getYValues() {
 		var ret = new int[path.size()];
 		for (int i = 0; i < path.size(); i++) {
@@ -124,6 +127,7 @@ public class Drone {
 		return ret;
 	}
 
+	@JsonIgnore
 	public int[] getZValues() {
 		var ret = new int[path.size()];
 		for (int i = 0; i < path.size(); i++) {
