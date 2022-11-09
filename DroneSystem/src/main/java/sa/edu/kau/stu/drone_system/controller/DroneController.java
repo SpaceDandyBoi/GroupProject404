@@ -3,6 +3,7 @@ package sa.edu.kau.stu.drone_system.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +17,7 @@ import sa.edu.kau.stu.drone_base_library.entity.Drone;
 import sa.edu.kau.stu.drone_base_library.path.Coord;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
+@CrossOrigin
 @RestController
 public class DroneController {
 	@Autowired
