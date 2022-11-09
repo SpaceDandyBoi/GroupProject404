@@ -1,10 +1,7 @@
 package sa.edu.kau.stu.drone_system.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.tomcat.util.json.JSONParser;
-import org.bson.json.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
-import sa.edu.kau.stu.drone_base_library.path.Coord;
 import sa.edu.kau.stu.drone_base_library.path.PathType;
 import sa.edu.kau.stu.drone_database_service.service.IDroneService;
 
@@ -146,34 +141,36 @@ public class ClientController {
 	public String newDronePage(Model model) {
 		Drone drone = new Drone();
 		drone.setPath(new ArrayList<>());
-		model.addAttribute("drone",drone);
+		model.addAttribute("drone", drone);
 		return "new_drone";
 	}
-	
+
 	// Open the new drone form page
 	@PostMapping("/newdrone")
-	public String newDrone(Model model,@RequestBody String s) { 
+	public String newDrone(Model model, @RequestBody String s) {
 		String[] ans = s.split("&");
-		for(int i = 0; i < ans.length;i++){
-			ans[i] = ans[i].substring(ans[i].indexOf('=')+1, ans[i].length());
-			
+		for (int i = 0; i < ans.length; i++) {
+			ans[i] = ans[i].substring(ans[i].indexOf('=') + 1, ans[i].length());
+
 		}
-		
+
 		Drone d;
-		if(ans[5] == "Simple") {
-			 d = new Drone(ans[0], ans[1], Double.parseDouble(ans[2]), Integer.parseInt(ans[3]), Double.parseDouble(ans[4]), PathType.Simple);
-		}else {
-			d = new Drone(ans[0], ans[1], Double.parseDouble(ans[2]), Integer.parseInt(ans[3]), Double.parseDouble(ans[4]), PathType.Bezier);
+		if (ans[5] == "Simple") {
+			d = new Drone(ans[0], ans[1], Double.parseDouble(ans[2]), Integer.parseInt(ans[3]),
+					Double.parseDouble(ans[4]), PathType.Simple);
+		} else {
+			d = new Drone(ans[0], ans[1], Double.parseDouble(ans[2]), Integer.parseInt(ans[3]),
+					Double.parseDouble(ans[4]), PathType.Bezier);
 		}
-		
-		for(int i = 10; i < ans.length; i+=4) {
+
+		for (int i = 10; i < ans.length; i += 4) {
 			int x = Integer.parseInt(ans[i]);
-			int y = Integer.parseInt(ans[i+1]);
-			int z = Integer.parseInt(ans[i+2]);
-			int t = Integer.parseInt(ans[i+3]);
+			int y = Integer.parseInt(ans[i + 1]);
+			int z = Integer.parseInt(ans[i + 2]);
+			int t = Integer.parseInt(ans[i + 3]);
 			d.addPointToPath(x, y, z, t);
 		}
-		
+
 		myDrones.addDrone(d);
 		return "redirect:/view/all";
 	}
