@@ -1,12 +1,8 @@
 package sa.edu.kau.stu.drone_system.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.ws.Response;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -29,8 +25,6 @@ public class DroneController {
 	public DroneController(IDroneService _droneService) {
 	}
 
-
-
 	// **************************************************************
 	// /drones
 	// **************************************************************
@@ -39,7 +33,6 @@ public class DroneController {
 	public List<Drone> getDrones() {
 		return myDrones.getAllDrones();
 	}
-
 
 	@PostMapping("/drones")
 	public void postDrones(@RequestBody Drone drone) {
@@ -51,30 +44,9 @@ public class DroneController {
 	// @PatchMapping("/drones")
 	// @DeleteMapping("/drones")
 
-
 	// **************************************************************
 	// /drones/collisions
 	// **************************************************************
-
-	// use this when collisions.html is ready
-	
-	  @GetMapping("/collisions/drones")
-	  public String collisionsPage(Model model) {
-		  //model.addAttribute("drones",myDrones.getAllCollisionsDrones());
-		  model.addAttribute("drones", myDrones.getAllDrones());
-		  model.addAttribute("collision", myDrones.getAllCollisionsDrones());
-
-		  return "collisions_drones";
-	  }
-	  
-	  @GetMapping("/collisions/coords")
-	  public String collisionsCoordsPage(Model model) {
-		  model.addAttribute("drones", myDrones.getAllDrones());
-		  model.addAttribute("collision", myDrones.getAllCollisionsCoords());
-
-
-		  return "collisions_coords";
-	  }
 
 	// Return a list of drones that would collide a given time
 	@GetMapping("/drones/collisions")
@@ -82,7 +54,6 @@ public class DroneController {
 		// TODO: Implmement here
 		return null;
 	}
-	
 
 	// **************************************************************
 	// /drones/{id}
@@ -96,8 +67,9 @@ public class DroneController {
 
 	// TODO: I don't get this
 	// @PostMapping("/drones/{id}")
-	// public void postDrone(@PathVariable("id") String id, @RequestBody Drone drone) {
-	// 	myDrones.updateDrone(id, drone);
+	// public void postDrone(@PathVariable("id") String id, @RequestBody Drone
+	// drone) {
+	// myDrones.updateDrone(id, drone);
 	// }
 
 	@PutMapping("/drone/{id}")
@@ -130,12 +102,10 @@ public class DroneController {
 		return myDrones.updateDrone(id, droneToupdate);
 	}
 
-
 	@GetMapping("/drones/{id}/model")
 	public StringResponseWrapper getDroneModel(@PathVariable("id") String id) {
 		StringResponseWrapper s = new StringResponseWrapper(myDrones.getDroneModel(id));
 		return s;
-
 	}
 
 	@GetMapping("/drones/{id}/mass")
