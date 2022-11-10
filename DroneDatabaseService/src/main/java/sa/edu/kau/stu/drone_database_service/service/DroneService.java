@@ -272,8 +272,8 @@ public class DroneService implements IDroneService {
 		
 		String[][] dronePairs = new String[collisions.size()/2][3];
 		for (int i = 0, d = 0, t = 0; d < collisions.size(); i++, t++,d++) {
-			dronePairs[i][0] = collisions.get(d).getName();
-			dronePairs[i][1] = collisions.get(++d).getName();
+			dronePairs[i][0] = collisions.get(d).getId();
+			dronePairs[i][1] = collisions.get(++d).getId();
 			dronePairs[i][2] = times.get(t).toString();
 		}
 		
