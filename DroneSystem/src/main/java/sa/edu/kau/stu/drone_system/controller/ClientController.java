@@ -107,8 +107,18 @@ public class ClientController {
 
 	@GetMapping("/view/collisions/drones")
 	public String collisionsPage(Model model) {
+		
+		String[][] collisionInfo = myDrones.getAllCollisionsDrones();
+		String[][] response = new String[collisionInfo.length][5];
+		for(int i = 0;i < response.length; i++) {
+			response[i][0] = myDrones.getDroneInfo(collisionInfo[i][0]).getName();
+			response[i][1] = myDrones.getDroneInfo(collisionInfo[i][1]).getName();
+			response[i][2] = collisionInfo[i][2];
+			response[i][3] = collisionInfo[i][0];
+			response[i][4] = collisionInfo[i][1];
+		}
 		model.addAttribute("drones", myDrones.getAllDrones());
-		model.addAttribute("collision", myDrones.getAllCollisionsDrones());
+		model.addAttribute("collision", response);
 
 		return "collisions_drones";
 	}
