@@ -107,18 +107,18 @@ public class ClientController {
 
 	@GetMapping("/view/collisions/drones")
 	public String collisionsPage(Model model) {
-		
-		String[][] collisionInfo = myDrones.getAllCollisionsDrones();
-		String[][] response = new String[collisionInfo.length][5];
-		for(int i = 0;i < response.length; i++) {
-			response[i][0] = myDrones.getDroneInfo(collisionInfo[i][0]).getName();
-			response[i][1] = myDrones.getDroneInfo(collisionInfo[i][1]).getName();
-			response[i][2] = collisionInfo[i][2];
-			response[i][3] = collisionInfo[i][0];
-			response[i][4] = collisionInfo[i][1];
+		var cols = myDrones.getAllCollisionsDrones();
+		var colData = new String[cols.size()][5];
+		for (int i = 0; i < colData.length; i++) {
+			var col = cols.get(i);
+			colData[i][0] = col.getItem1()[0].getName();
+			colData[i][1] = col.getItem1()[1].getName();
+			colData[i][2] = col.getItem2();
+			colData[i][3] = col.getItem1()[0].getId();
+			colData[i][4] = col.getItem1()[1].getId();
 		}
 		model.addAttribute("drones", myDrones.getAllDrones());
-		model.addAttribute("collision", response);
+		model.addAttribute("collision", colData);
 
 		return "collisions_drones";
 	}
@@ -216,7 +216,6 @@ public class ClientController {
 	// /deletedrone/{id}
 	// **************************************************************
 
-	
 	@GetMapping("/deletedrone/{id}")
 	public String deleteDronePage(@PathVariable String id) {
 		if (id == null || id.equals("")) {
@@ -225,35 +224,5 @@ public class ClientController {
 
 		myDrones.deleteDrone(id);
 		return "redirect:/view/all";
-	}
-
-	// TODO: IMPLEMENT THIS
-	// **************************************************************
-	// /editpath/{id}
-	// **************************************************************
-
-	// use this when edit_path.html is ready:
-	@GetMapping("/editPath/{id}")
-	public String editPathPage(Model model, @PathVariable String id) {
-		if (id == null || id.equals("")) {
-			throw new RuntimeException("ID `" + id + "` is invalid.");
-		}
-
-		// TODO: Implement here
-		return "edit_path";
-	}
-
-	@PostMapping("/editpath/{id}")
-	public String editPath(Model model, @PathVariable String id, @ModelAttribute("drone") Drone drone) {
-		if (id == null || id.equals("")) {
-			throw new RuntimeException("ID `" + id + "` is invalid.");
-		}
-
-		if (drone == null) {
-			throw new RuntimeException("Drone data `" + drone + "` is invalid.");
-		}
-
-		// TODO: Implement here
-		return "redirect:/drones";
 	}
 }
