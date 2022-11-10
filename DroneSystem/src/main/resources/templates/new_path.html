@@ -4,81 +4,59 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Drone Tracking</title>
+
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-	<style>
-		body {
-			background-color: #c3eaff;
-			color: aqua;
-		}
-
-	</style>
+	<link th:href="@{/css/all_styles.css}" rel="stylesheet" />
 </head>
 
 <body>
 	<div th:replace="/navigation_bar::navigation_bar">
 	</div>
 
-	<h1 style="margin-left: 3%; color: black; margin-top: 1%"> Add Drone </h1>
+	<h1 style="margin-left: 3%; margin-top: 1%"> Add Drone </h1>
+
 	<br>
+
 	<br>
-	<div class = "container">
-		<div class = "row">
-			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color:rgb(45, 45, 45);">
-				<h1 class = "text-center"> Add New Drone </h1>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Add New Drone </h1>
 				<div class="card" style="background-color:rgb(45, 45, 45);">
-					<div class = "card-body">
-						<form th:action="@{/path/new/{pathCount} (path=${pathcount})}" th:object = "${coord}" method="POST">
+					<div class="card-body">
+						<form th:action="@{/path/new/{pathCount} (path=${pathcount})}" th:object="${coord}"
+							method="POST">
 							<div class="row">
-								<div class ="col-3">
+								<div class="col-3">
 									<label> t </label>
-									<input
-									type = "text"
-									name = "t"
-									th:field = "*{time}"
-									class = "form-control"
-									placeholder="Enter t"
-									/>
+									<input type="text" name="t" th:field="*{time}" class="form-control"
+										placeholder="Enter t" />
 								</div>
 
-								<div class ="col-3">
+								<div class="col-3">
 									<label> x </label>
-									<input
-									type = "text"
-									name = "x"
-									th:field = "*{x}"
-									class = "form-control"
-									placeholder="Enter x"
-									/>
+									<input type="text" name="x" th:field="*{x}" class="form-control"
+										placeholder="Enter x" />
 								</div>
 
-								<div class ="col-3">
+								<div class="col-3">
 									<label> y </label>
-									<input
-									type = "text"
-									name = "y"
-									th:field = "*{y}"
-									class = "form-control"
-									placeholder="Enter y"
-									/>
+									<input type="text" name="y" th:field="*{y}" class="form-control"
+										placeholder="Enter y" />
 								</div>
 
-								<div class ="col-3">
+								<div class="col-3">
 									<label> z </label>
-									<input
-									type = "text"
-									name = "z"
-									th:field = "*{z}"
-									class = "form-control"
-									placeholder="Enter z"
-									/>
+									<input type="text" name="z" th:field="*{z}" class="form-control"
+										placeholder="Enter z" />
 								</div>
+							</div>
 
-
-							<button class = "btn btn-primary mb-3" type="submit" id="submit">Submit</button>
-
+							<button class="btn btn-primary mb-3" type="submit" id="submit">Submit</button>
 						</form>
 					</div>
 				</div>
