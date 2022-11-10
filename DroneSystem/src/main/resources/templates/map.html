@@ -26,8 +26,10 @@
 </body>
 
 <script type="module">
-	const ocean_color = '#D8F2FF';
-	const contries_color = '';
+	const ocean_color = '#191A1A';
+	const contries_color = '#343332';
+	const border_color = '#454545';
+	const coastline_color = contries_color;
 
 	const map_center = {longitude: 0, latitude: 0};
 	const map_style = {
@@ -41,7 +43,7 @@
 			{
 				'id': 'background',
 				'type': 'background',
-				'paint': {'background-color': ocean_color, },
+				'paint': {'background-color': ocean_color},
 				'filter': ['all'],
 				'layout': {'visibility': 'visible'},
 				'maxzoom': 24
@@ -51,9 +53,9 @@
 				'type': 'line',
 				'paint': {
 					'line-blur': 0.5,
-					'line-color': '#198EC8',
+					'line-color': coastline_color,
 					'line-width': {
-						'stops': [[0, 2], [6, 6], [14, 9], [22, 18]]
+						'stops': [ [0, 2], [6, 6], [14, 9], [22, 18] ]
 					}
 				},
 				'filter': ['all'],
@@ -70,23 +72,11 @@
 					'fill-color': [
 						'match',
 						['get', 'ADM0_A3'],
-						['ARM', 'ATG', 'AUS', 'BTN', 'CAN', 'COG', 'CZE', 'GHA', 'GIN', 'HTI', 'ISL', 'JOR', 'KHM', 'KOR', 'LVA', 'MLT', 'MNE', 'MOZ', 'PER', 'SAH', 'SGP', 'SLV', 'SOM', 'TJK', 'TUV', 'UKR', 'WSM'],
-						'#D6C7FF',
-						['AZE', 'BGD', 'CHL', 'CMR', 'CSI', 'DEU', 'DJI', 'GUY', 'HUN', 'IOA', 'JAM', 'LBN', 'LBY', 'LSO', 'MDG', 'MKD', 'MNG', 'MRT', 'NIU', 'NZL', 'PCN', 'PYF', 'SAU', 'SHN', 'STP', 'TTO', 'UGA', 'UZB', 'ZMB'],
-						'#EBCA8A',
-						['AGO', 'ASM', 'ATF', 'BDI', 'BFA', 'BGR', 'BLZ', 'BRA', 'CHN', 'CRI', 'ESP', 'HKG', 'HRV', 'IDN', 'IRN', 'ISR', 'KNA', 'LBR', 'LCA', 'MAC', 'MUS', 'NOR', 'PLW', 'POL', 'PRI', 'SDN', 'TUN', 'UMI', 'USA', 'USG', 'VIR', 'VUT'],
-						'#C1E599',
-						['ARE', 'ARG', 'BHS', 'CIV', 'CLP', 'DMA', 'ETH', 'GAB', 'GRD', 'HMD', 'IND', 'IOT', 'IRL', 'IRQ', 'ITA', 'KOS', 'LUX', 'MEX', 'NAM', 'NER', 'PHL', 'PRT', 'RUS', 'SEN', 'SUR', 'TZA', 'VAT'],
-						'#E7E58F',
-						['AUT', 'BEL', 'BHR', 'BMU', 'BRB', 'CYN', 'DZA', 'EST', 'FLK', 'GMB', 'GUM', 'HND', 'JEY', 'KGZ', 'LIE', 'MAF', 'MDA', 'NGA', 'NRU', 'SLB', 'SOL', 'SRB', 'SWZ', 'THA', 'TUR', 'VEN', 'VGB'],
-						'#98DDA1',
-						['AIA', 'BIH', 'BLM', 'BRN', 'CAF', 'CHE', 'COM', 'CPV', 'CUB', 'ECU', 'ESB', 'FSM', 'GAZ', 'GBR', 'GEO', 'KEN', 'LTU', 'MAR', 'MCO', 'MDV', 'NFK', 'NPL', 'PNG', 'PRY', 'QAT', 'SLE', 'SPM', 'SYC', 'TCA', 'TKM', 'TLS', 'VNM', 'WEB', 'WSB', 'YEM', 'ZWE'],
-						'#83D5F4',
-						['ABW', 'ALB', 'AND', 'ATC', 'BOL', 'COD', 'CUW', 'CYM', 'CYP', 'EGY', 'FJI', 'GGY', 'IMN', 'KAB', 'KAZ', 'KWT', 'LAO', 'MLI', 'MNP', 'MSR', 'MYS', 'NIC', 'NLD', 'PAK', 'PAN', 'PRK', 'ROU', 'SGS', 'SVN', 'SWE', 'TGO', 'TWN', 'VCT', 'ZAF'],
-						'#B1BBF9',
-						['ATA', 'GRL'],
-						'#FFFFFF',
-						'#EAB38F'
+						['AFG', 'ALA', 'ALB', 'DZA', 'ASM', 'AND', 'AGO', 'AIA', 'ATA', 'ATG', 'ARG', 'ARM', 'ABW', 'AUS', 'AUT', 'AZE', 'BHS', 'BHR', 'BGD', 'BRB', 'BLR', 'BEL', 'BLZ', 'BEN', 'BMU', 'BTN', 'BOL', 'BES', 'BIH', 'BWA', 'BVT', 'BRA', 'IOT', 'BRN', 'BGR', 'BFA', 'BDI', 'KHM', 'CMR', 'CAN', 'CPV', 'CYM', 'CAF', 'TCD', 'CHL', 'CHN', 'CXR', 'CCK', 'COL', 'COM', 'COG', 'COD', 'COK', 'CRI', 'CIV', 'HRV', 'CUB', 'CUW', 'CYP', 'CZE', 'DNK', 'DJI', 'DMA', 'DOM', 'ECU', 'EGY', 'SLV', 'GNQ', 'ERI', 'EST', 'ETH', 'FLK', 'FRO', 'FJI', 'FIN', 'FRA', 'GUF', 'PYF', 'ATF', 'GAB', 'GMB', 'GEO', 'DEU', 'GHA', 'GIB', 'GRC', 'GRL', 'GRD', 'GLP', 'GUM', 'GTM', 'GGY', 'GIN', 'GNB', 'GUY', 'HTI', 'HMD', 'VAT', 'HND', 'HKG', 'HUN', 'ISL', 'IND', 'IDN', 'IRN', 'IRQ', 'IRL', 'IMN', 'ISR', 'ITA', 'JAM', 'JPN', 'JEY', 'JOR', 'KAZ', 'KEN', 'KIR', 'PRK', 'KOR', 'KWT', 'KGZ', 'LAO', 'LVA', 'LBN', 'LSO', 'LBR', 'LBY', 'LIE', 'LTU', 'LUX', 'MAC', 'MKD', 'MDG', 'MWI', 'MYS', 'MDV', 'MLI', 'MLT', 'MHL', 'MTQ', 'MRT', 'MUS', 'MYT', 'MEX', 'FSM', 'MDA', 'MCO', 'MNG', 'MNE', 'MSR', 'MAR', 'MOZ', 'MMR', 'NAM', 'NRU', 'NPL', 'NLD', 'NCL', 'NZL', 'NIC', 'NER', 'NGA', 'NIU', 'NFK', 'MNP', 'NOR', 'OMN', 'PAK', 'PLW', 'PSE', 'PAN', 'PNG', 'PRY', 'PER', 'PHL', 'PCN', 'POL', 'PRT', 'PRI', 'QAT', 'REU', 'ROU', 'RUS', 'RWA', 'BLM', 'SHN', 'KNA', 'LCA', 'MAF', 'SPM', 'VCT', 'WSM', 'SMR', 'STP', 'SAU', 'SEN', 'SRB', 'SYC', 'SLE', 'SGP', 'SXM', 'SVK', 'SVN', 'SLB', 'SOM', 'ZAF', 'SGS', 'SSD', 'ESP', 'LKA', 'SDN', 'SUR', 'SJM', 'SWZ', 'SWE', 'CHE', 'SYR', 'TWN', 'TJK', 'TZA', 'THA', 'TLS', 'TGO', 'TKL', 'TON', 'TTO', 'TUN', 'TUR', 'TKM', 'TCA', 'TUV', 'UGA', 'UKR', 'ARE', 'GBR', 'USA', 'UMI', 'URY', 'UZB', 'VUT', 'VEN', 'VNM', 'VGB', 'VIR', 'WLF', 'ESH', 'YEM', 'ZMB', 'ZWE'],
+						contries_color,
+						contries_color,
+						//['ATA', 'GRL'],
+						//'#FFFFFF',
 					]
 				},
 				'filter': ['all'],
@@ -99,9 +89,9 @@
 				'id': 'countries-boundary',
 				'type': 'line',
 				'paint': {
-					'line-color': 'rgba(255, 255, 255, 1)',
-					'line-width': {'stops': [[1, 1], [6, 2], [14, 6], [22, 12]]},
-					'line-opacity': {'stops': [[3, 0.5], [6, 1]]}
+					'line-color': border_color,
+					'line-width': {'stops': [ [1, 1], [6, 2], [14, 6], [22, 12] ]},
+					'line-opacity': {'stops': [ [3, 0.5], [6, 1] ]}
 				},
 				'layout': {'line-cap': 'round', 'line-join': 'round', 'visibility': 'visible'},
 				'source': 'maplibre',
@@ -112,32 +102,10 @@
 				'id': 'geolines',
 				'type': 'line',
 				'paint': {'line-color': '#1077B0', 'line-opacity': 1, 'line-dasharray': [3, 3]},
-				'filter': ['all', ['!=', 'name', 'International Date Line']],
+				'filter': ['all', ['!=', 'name', 'International Date Line'] ],
 				'layout': {'visibility': 'visible'},
 				'source': 'maplibre',
 				'maxzoom': 24,
-				'source-layer': 'geolines'
-			},
-			{
-				'id': 'geolines-label',
-				'type': 'symbol',
-				'paint': {
-					'text-color': '#1077B0',
-					'text-halo-blur': 1,
-					'text-halo-color': 'rgba(255, 255, 255, 1)',
-					'text-halo-width': 1
-				},
-				'filter': ['all', ['!=', 'name', 'International Date Line']],
-				'layout': {
-					'text-font': ['Open Sans Semibold'],
-					'text-size': {'stops': [[2, 12], [6, 16]]},
-					'text-field': '{name}',
-					'visibility': 'visible',
-					'symbol-placement': 'line'
-				},
-				'source': 'maplibre',
-				'maxzoom': 24,
-				'minzoom': 1,
 				'source-layer': 'geolines'
 			},
 			{
@@ -145,18 +113,18 @@
 				'type': 'symbol',
 				'paint': {
 					'text-color': 'rgba(8, 37, 77, 1)',
-					'text-halo-blur': {'stops': [[2, 0.2], [6, 0]]},
-					'text-halo-color': 'rgba(255, 255, 255, 1)',
-					'text-halo-width': {'stops': [[2, 1], [6, 1.6]]}
+					'text-halo-blur': {'stops': [ [2, 0.2], [6, 0] ]},
+					'text-halo-color': 'rgba(180, 180, 180, 1)',
+					'text-halo-width': {'stops': [ [2, 1], [6, 1.6] ]}
 				},
 				'filter': ['all'],
 				'layout': {
 					'text-font': ['Open Sans Semibold'],
-					'text-size': {'stops': [[2, 10], [4, 12], [6, 16]]},
-					'text-field': {'stops': [[2, '{ABBREV}'], [4, '{NAME}']]},
+					'text-size': {'stops': [ [2, 10], [4, 12], [6, 16] ]},
+					'text-field': {'stops': [ [2, '{ABBREV}'], [4, '{NAME}'] ]},
 					'visibility': 'visible',
 					'text-max-width': 10,
-					'text-transform': {'stops': [[0, 'uppercase'], [2, 'none']]}
+					'text-transform': {'stops': [ [0, 'uppercase'], [2, 'none'] ]}
 				},
 				'source': 'maplibre',
 				'maxzoom': 24,
