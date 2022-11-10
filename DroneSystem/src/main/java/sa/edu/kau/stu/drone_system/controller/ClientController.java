@@ -217,6 +217,7 @@ public class ClientController {
 	// /deletedrone/{id}
 	// **************************************************************
 
+	
 	@GetMapping("/deletedrone/{id}")
 	public String deleteDronePage(@PathVariable String id) {
 		if (id == null || id.equals("")) {

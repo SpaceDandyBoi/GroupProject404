@@ -1,5 +1,8 @@
 package sa.edu.kau.stu.drone_system.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +55,20 @@ public class DroneController {
 
 	// Return a list of drones that would collide a given time
 	@GetMapping("/drones/collisions")
-	public List<Drone> collisionsPage() {
-		// TODO: Implmement here
-		return null;
+	public HashMap<String, HashMap<String,String>> collisionsPage() {
+		HashMap<String, HashMap<String,String>> response = new HashMap<String, HashMap<String,String>>();
+
+		String[][] data = myDrones.getAllCollisionsDrones();
+		for(int i =0; i < data.length; i++) {
+			String colideName = "Collision" + (i+1);
+			HashMap<String, String> temp = new HashMap<>();
+			temp.put("Drone1", data[i][0]);
+			temp.put("Drone2", data[i][1]);
+			temp.put("Time", data[i][2]);
+			response.put(colideName, temp);
+		}
+		
+		return response;
 	}
 
 	// **************************************************************
