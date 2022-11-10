@@ -69,7 +69,7 @@ public class ClientController {
 	// **************************************************************
 
 	// show a single drone
-	@GetMapping(path = "/view/drone/{id}")
+	@GetMapping("/view/drone/{id}")
 	public String getDroneById(Model model, @PathVariable String id) {
 		if (id == null || id.equals("")) {
 			throw new RuntimeException("ID `" + id + "` is invalid.");
@@ -86,30 +86,19 @@ public class ClientController {
 	// uses map.html when ready
 	@GetMapping("/view/map")
 	public String mapPage(Model model) {
-		// TODO: Implemnt This
+		model.addAttribute("drone_id", "");
 		return "map";
 	}
 
 	// **************************************************************
-	// /map/id/{id}
+	// /view/map/id/{id}
 	// **************************************************************
 
 	// uses map.html when ready
 	@GetMapping("/view/map/id/{id}")
-	public String singleDroneMap(Model model) {
-		// TODO: Implemnt This
-		return "map"; // can it reuse map.html or we need another web page?
-	}
-
-	// **************************************************************
-	// /map/time/{time}
-	// **************************************************************
-
-	// uses map.html when ready
-	@GetMapping("/view/map/time/{time}")
-	public String mapAtTime(Model model) {
-		// TODO: Implemnt This
-		return "map"; // can it reuse map.html or we need another web page?
+	public String singleDroneMap(Model model, @PathVariable String id) {
+		model.addAttribute("drone_id", id);
+		return "map";
 	}
 
 	// **************************************************************
