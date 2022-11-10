@@ -184,7 +184,7 @@
 	// Map drone data path so that it is contained in the radius of jeddah
 	drone_data.forEach(d => {
 		d.path = d.path.map(c => {
-			return {'x': (c.x / 2500) + jeddah_center.longitude, 'y': (c.y / 2500) + jeddah_center.latitude, 'z': c.z + 1000, 'time': c.time}
+			return {'x': (c.x / 2500) + jeddah_center.longitude, 'y': (c.y / 2500) + jeddah_center.latitude, 'z': (c.z * 20) + 500, 'time': c.time}
 		})
 	})
 
