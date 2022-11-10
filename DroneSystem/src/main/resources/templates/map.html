@@ -248,7 +248,25 @@
 			pitch: 90,
 		},
 		controller: true,
-		layers: static_layers
+		layers: static_layers,
+		getTooltip: ({object}) => object && {
+			html: `
+				<h3>${object.properties.Name}</h3>
+				<ul>
+					<li>ID: ${object.properties['ID']}</li>
+					<li>Name: ${object.properties['Name']}</li>
+					<li>Model: ${object.properties['Model']}</li>
+					<li>Mass: ${object.properties['Mass']}</li>
+					<li>Battery Capacity: ${object.properties['Battery Capacity']}</li>
+					<li>Battery Percentage: ${object.properties['Battery Percentage']}</li>
+					<li>Path Type: ${object.properties['Path Type']}</li>
+				</ul>
+			`,
+			style: {
+				backgroundColor: '#555',
+				fontSize: '0.8em'
+			}
+		}
 	});
 
 	var scene_data = get_scene_data(drone_data);
