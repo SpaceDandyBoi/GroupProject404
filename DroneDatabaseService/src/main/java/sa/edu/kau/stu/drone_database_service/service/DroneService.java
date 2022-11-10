@@ -216,8 +216,11 @@ public class DroneService implements IDroneService {
 		List<Integer> times = new ArrayList<>();
 		outer_loop: for (int i = 0; i < drones.size(); i++) {
 			for (int j = i + 1; j < drones.size();) {
-				var path1 = drones.get(i).getPath();
-				var path2 = drones.get(j).getPath();
+				var drone1 = drones.get(i);
+				var drone2 = drones.get(j);
+
+				var path1 = drone1.getPath();
+				var path2 = drone2.getPath();
 
 				// figure out the range of times that both drone paths are active in
 				// because maybe one drone starts/stops before the other
@@ -227,18 +230,20 @@ public class DroneService implements IDroneService {
 				var stopTimePath2 = path2.get(path2.size() - 1).getTime();
 
 				var startTime = startTimePath1;
-				var stoptime = stopTimePath1;
+				var stopTime = stopTimePath1;
 
 				if (startTimePath2 > startTimePath1)
 					startTime = startTimePath2;
 				if (stopTimePath2 > stopTimePath1)
-					startTime = stopTimePath2;
+					stopTime = stopTimePath2;
 
 				// check for collision at each time t
 				var collisionTrue = false;
 
-				for (int time = startTime; time < stoptime; time++) {
-					collisionTrue = isCollision(path1.get(time), path2.get(time));
+				for (int time = startTime; time < stopTime; time++) {
+					var coord1 = _pathService.getCoordinate(path1, drone1.getPathType(), times.get(time));
+					var coord2 = _pathService.getCoordinate(path2, drone2.getPathType(), times.get(time));
+					collisionTrue = isCollision(coord1, coord2);
 					if (collisionTrue) { // collision found
 						collisions.add(drones.get(i));
 						collisions.add(drones.get(j));
