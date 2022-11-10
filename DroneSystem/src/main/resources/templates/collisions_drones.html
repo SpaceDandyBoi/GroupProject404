@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th='http://www.thymeleaf.org'>
 
 
 <head>
-	<meta charset="UTF-8">
+	<meta charset='UTF-8'>
 	<title>Drone Tracking</title>
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+		integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 
-	<link th:href="@{/css/all_styles.css}" rel="stylesheet" />
+	<link th:href='@{/css/all_styles.css}' rel='stylesheet' />
 </head>
 
 <body>
-	<div th:replace="/navigation_bar::navigation_bar">
+	<div th:replace='/navigation_bar::navigation_bar'>
 	</div>
 
-	<div class="container-fluid">
-		<div class="row">
-			<h1 style="color: black; margin-bottom:1em; margin-left:2em;"> List Drones </h1>
+	<div class='container-fluid'>
+		<div class='row'>
+			<h1 style=' margin-bottom:1em; margin-left:2em;'> List Drones </h1>
 		</div>
 	</div>
 
-	<div class="container" style="color:black; text-align:center;">
-		<table class="table table-striped table-bordered">
-			<thead class="table-dark">
-				<tr>
-					<th> Drone 1 </th>
-					<th> Drone 2 </th>
-					<th> Time of Collision </th>
-					<th> </th>
-				</tr>
-			</thead>
+	<div class='container-fluid'>
+		<div class='row'>
+			<div class='col-lg-6 col-md-6 col-sm-6 container-fluid card'>
+				<div class='card-body' style='color:black; text-align:center'>
+					<table class='table table-striped table-bordered'>
+						<thead class='table-dark'>
+							<tr>
+								<th> Drone 1 </th>
+								<th> Drone 2 </th>
+								<th> Time of Collision </th>
+								<th> </th>
+							</tr>
+						</thead>
 
-			<tbody>
-				<tr th:each="c: ${collision}">
-					<td th:text="${c[0]}"></td>
-					<td th:text="${c[1]}"></td>
-					<td th:text="${c[2]}"></td>
-					<td>
-						<a th:href="@{/editdrone/{id}(id=${c[3]})}" class="btn btn-primary">Edit Drone 1</a>
+						<tbody>
+							<tr th:each='c: ${collision}'>
+								<td th:text='${c[0]}'></td>
+								<td th:text='${c[1]}'></td>
+								<td th:text='${c[2]}'></td>
+								<td>
+									<a th:href='@{/editdrone/{id}(id=${c[3]})}' class='btn btn-primary'>
+										Edit Drone 1
+									</a>
 
-						<a th:href="@{/editdrone/{id}(id=${c[4]})}" class="btn btn-primary">Edit Drone 2</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+									<a th:href='@{/editdrone/{id}(id=${c[4]})}' class='btn btn-primary'>
+										Edit Drone 2
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 
