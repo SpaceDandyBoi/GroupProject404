@@ -4,204 +4,134 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Drone Tracking</title>
+
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-	<style>
-		body {
-			background-color: #c3eaff;
-			color: aqua;
-		}
-
-	</style>
+	<link th:href="@{/css/all_styles.css}" rel="stylesheet" />
 </head>
 
 <body>
 	<div th:replace="/navigation_bar::navigation_bar">
 	</div>
 
-	<h1 style="margin-left: 3%; color: black; margin-top: 1%"> Add Drone </h1>
+	<h1 style="margin-left: 3%; margin-top: 1%"> Add Drone </h1>
+
 	<br>
+
 	<br>
-	<div class = "container">
-		<div class = "row">
-			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color:rgb(45, 45, 45);">
-				<h1 class = "text-center"> Add New Drone </h1>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Add New Drone </h1>
 				<div class="card" style="background-color:rgb(45, 45, 45);">
-					<div class = "card-body">
-						<form action="http://localhost:8080/newdrone"  method="POST" id="droneForm">
+					<div class="card-body">
+						<form action="http://localhost:8080/newdrone" method="POST" id="droneForm">
+							<div class="form-group">
+								<label> Drone Name </label>
+								<input type="text" name="name" class="form-control" placeholder="Enter Drone Name" />
+							</div>
 
-								<div class ="form-group">
-									<label> Drone Name </label>
-									<input
-									type = "text"
-									name = "name"
+							<div class="form-group">
+								<label> Drone Model </label>
+								<input type="text" name="model" class="form-control" placeholder="Enter Model Name" />
+							</div>
 
-									class = "form-control"
-									placeholder="Enter Drone Name"
-									/>
-								</div>
+							<div class="form-group">
+								<label> Mass </label>
+								<input type="number" name="mass" step="0.01" value=0 class="form-control"
+									placeholder="Enter Mass" />
+							</div>
 
-								<div class ="form-group">
-									<label> Drone Model </label>
-									<input
-									type = "text"
-									name = "model"
+							<div class="form-group">
+								<label> Drone Battery Capacity </label>
+								<input type="number" name="batteryCapacity" step="1" value=0 class="form-control"
+									placeholder="Battery Capacity" />
+							</div>
 
-									class = "form-control"
-									placeholder="Enter Model Name"
-									/>
-								</div>
-
-								<div class ="form-group">
-									<label> Mass </label>
-									<input
-									type = "number"
-									name = "mass"
-									step = "0.01"
-									value=0
-									class = "form-control"
-									placeholder="Enter Mass"
-									/>
-								</div>
-
-								<div class ="form-group">
-									<label> Drone Battery Capacity </label>
-									<input
-									type = "number"
-									name = "batteryCapacity"
-									step = "1"
-									value=0
-									class = "form-control"
-									placeholder="Battery Capacity"
-									/>
-								</div>
-
-								<div class ="form-group">
-									<label> Drone Battery Percentage </label>
-									<input
-									type = "number"
-									name = "batteryPercentage"
-									value=0
-									step = "0.01"
-									max="1"
-									min="0"
-									class = "form-control"
-									placeholder="Battery Percentage"
-									/>
-								</div>
+							<div class="form-group">
+								<label> Drone Battery Percentage </label>
+								<input type="number" name="batteryPercentage" value=0 step="0.01" max="1" min="0"
+									class="form-control" placeholder="Battery Percentage" />
+							</div>
 
 
+							<div class="form-group" style="margin-top:2em;">
+								<label> Path Type </label>
+								<select name="pathType" id="pathType" class="form-select">
+									<option selected value="Simple">Simple</option>
+									<option value="Bezier">Bezier</option>
+								</select>
+							</div>
 
-								<div class ="form-group" style="margin-top:2em;">
-									<label> Path Type </label>
-									<select name="pathType" id="pathType" class="form-select">
-		                                  <option selected value="Simple">Simple</option>
-		                                  <option value="Bezier">Bezier</option>
-		                           </select>
-								</div>
-
-								<div id="readroot"  style="display: none">
+							<div id="readroot" style="display: none">
 								<div class="row">
-								    <div class ="col-3">
+									<div class="col-3">
 										<label> time </label>
-										<input
-										type = "number"
-										name = "array[]"
-										step = "1"
-										class = "form-control"
-										placeholder="time"
-
-										/>
+										<input type="number" name="array[]" step="1" class="form-control"
+											placeholder="time" />
 									</div>
 
-									<div class ="col-3">
+									<div class="col-3">
 										<label> x </label>
-										<input
-										type = "number"
-										name = "array[]"
-										class = "form-control"
-										placeholder="Enter x"
-
-										/>
+										<input type="number" name="array[]" class="form-control"
+											placeholder="Enter x" />
 									</div>
 
-									<div class ="col-3">
+									<div class="col-3">
 										<label> y </label>
-										<input
-										type = "number"
-										name = "array[]"
-										class = "form-control"
-										placeholder="Enter y"
-
-										/>
+										<input type="number" name="array[]" class="form-control"
+											placeholder="Enter y" />
 									</div>
 
-									<div class ="col-3">
+									<div class="col-3">
 										<label> z </label>
-										<input
-										type = "number"
-										name = "array[]"
-										class = "form-control"
-										placeholder="Enter z"
-
-										/>
+										<input type="number" name="array[]" class="form-control"
+											placeholder="Enter z" />
 									</div>
 								</div>
-								</div>
+							</div>
 
-								<span id="writeroot"></span>
+							<span id="writeroot"></span>
 
-								<div class="mt-3">
-									<input class = "btn btn-primary mb-3 float-right" type="button" id="more" value="Add More Point" onclick="moreFields()"/>
-								</div>
+							<div class="mt-3">
+								<input class="btn btn-primary mb-3 float-right" type="button" id="more"
+									value="Add More Point" onclick="moreFields()" />
+							</div>
 
-								<div class="text-center" style="clear:both; margin-top:2em">
-									<button class = "btn btn-primary mb-3" type="submit" id="submit">Submit</button>
-								</div>
-
-							</form>
-						</div>
-
-
-
-
-
-
-
-
-
+							<div class="text-center" style="clear:both; margin-top:2em">
+								<button class="btn btn-primary mb-3" type="submit" id="submit">Submit</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-<script>
-	var counter = 0;
+	<script>
+		var counter = 0;
 
-	function moreFields() {
-		counter++;
-		var newFields = document.getElementById('readroot').cloneNode(true);
-		newFields.id = '';
-		newFields.style.display = 'block';
-		var newField = newFields.childNodes;
-		for (var i=0;i<newField.length;i++) {
-			var theName = newField[i].name
-			if (theName)
-				newField[i].name = theName;
+		function moreFields() {
+			counter++;
+			var newFields = document.getElementById('readroot').cloneNode(true);
+			newFields.id = '';
+			newFields.style.display = 'block';
+			var newField = newFields.childNodes;
+			for (var i = 0; i < newField.length; i++) {
+				var theName = newField[i].name
+				if (theName)
+					newField[i].name = theName;
+			}
+			var insertHere = document.getElementById('writeroot');
+			insertHere.parentNode.insertBefore(newFields, insertHere);
 		}
-		var insertHere = document.getElementById('writeroot');
-		insertHere.parentNode.insertBefore(newFields,insertHere);
-	}
 
-	window.onload = moreFields;
-</script>
-
-
+		window.onload = moreFields;
+	</script>
 </body>
-
-
 
 </html>

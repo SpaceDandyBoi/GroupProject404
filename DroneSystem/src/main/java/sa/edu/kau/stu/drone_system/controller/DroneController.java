@@ -1,7 +1,5 @@
 package sa.edu.kau.stu.drone_system.controller;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,20 +52,19 @@ public class DroneController {
 	// **************************************************************
 
 	// Return a list of drones that would collide a given time
-	@GetMapping("/drones/collisions")
-	public HashMap<String, HashMap<String,String>> collisionsPage() {
-		HashMap<String, HashMap<String,String>> response = new HashMap<String, HashMap<String,String>>();
-
-		String[][] data = myDrones.getAllCollisionsDrones();
-		for(int i =0; i < data.length; i++) {
-			String colideName = "Collision" + (i+1);
-			HashMap<String, String> temp = new HashMap<>();
+	@GetMapping("/drones/collisions/id")
+	public HashMap<String, HashMap<String, String>> collisionsPage() {
+		var data = myDrones.getAllCollisionsID();
+		var response = new HashMap<String, HashMap<String, String>>();
+		for (var i = 0; i < data.length; i++) {
+			var collisionName = "Collision " + (i + 1);
+			var temp = new HashMap<String, String>();
 			temp.put("Drone1", data[i][0]);
 			temp.put("Drone2", data[i][1]);
 			temp.put("Time", data[i][2]);
-			response.put(colideName, temp);
+			response.put(collisionName, temp);
 		}
-		
+
 		return response;
 	}
 

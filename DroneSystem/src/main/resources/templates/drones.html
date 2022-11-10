@@ -4,17 +4,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Drone Tracking</title>
+
+	<!-- Plotly -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<link th:href="@{/css/all_styles.css}" rel="stylesheet" />
 </head>
 
-<body style="background-color: #c3eaff; color: aliceblue;">
+<body>
 	<div th:replace="/navigation_bar::navigation_bar">
 	</div>
 
 	<div class="container-fluid">
-		<h1 class="mb-3" style="margin-left: 3%; color: black; margin-top: 1%"> List Drones </h1>
+		<h1 class="mb-3" style="margin-left: 3%; margin-top: 1%"> List Drones </h1>
 
 		<div class="row">
 			<div class="col-3" th:each="drone: ${dronesList}">

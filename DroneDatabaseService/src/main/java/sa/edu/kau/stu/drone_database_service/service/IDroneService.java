@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import sa.edu.kau.stu.drone_base_library.entity.Drone;
+import sa.edu.kau.stu.drone_base_library.util.Pair;
 
 public interface IDroneService {
 	void addDrone(Drone drone);
@@ -32,10 +33,10 @@ public interface IDroneService {
 	int[] getDroneZValues(String id);
 
 	Page<Drone> getPagedDrones(int PageNumber);
-	
+
 	int[][] getAllCollisionsCoords();
-	
-	String[][] getAllCollisionsDrones();
 
+	String[][] getAllCollisionsID();
 
+	List<Pair<Drone[], String>> getAllCollisionsDrones();
 }
